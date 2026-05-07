@@ -3624,3 +3624,11 @@ Entries:
         map load time.
   id: 391
   time: '2026-05-06T02:41:00.0000000+00:00'
+- author: Shades
+  changes:
+    - type: Remove
+      message: >-
+        Removed whitelist for: BabyDragon, EmotionalSupportPet, CatCappy and
+        others FN Pets.
+  id: 392
+  time: '2026-05-07T04:50:53.0000000+00:00'
