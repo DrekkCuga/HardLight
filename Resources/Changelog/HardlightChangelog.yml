@@ -3660,3 +3660,59 @@ Entries:
       message: tweaked roundstart values
   id: 396
   time: '2026-05-07T05:09:54.0000000+00:00'
+- author: NotLivyathan
+  changes:
+    - type: Tweak
+      message: Minor grammatical improvements to C3 contraband severity info text.
+    - type: Fix
+      message: >-
+        Manually constructed airlocks/windoors/etc no longer lose accesses when
+        saved on a shuttle.
+    - type: Fix
+      message: >-
+        Airlocks/windoors/etc now keep custom-applied accesses when saved on a
+        shuttle.
+    - type: Fix
+      message: >-
+        Docking airlocks no longer remain bolted open when saved on a docked
+        shuttle.
+    - type: Fix
+      message: Characters with the Pettable trait can now actually be pet.
+    - type: Fix
+      message: Passengers no longer duplicate PDAs and headsets on spawn.
+    - type: Fix
+      message: >-
+        Syringe selected mode text no longer seizes when switching between
+        modes.
+    - type: Fix
+      message: Station maps no longer attempt to use incorrect sprite paths.
+    - type: Fix
+      message: >-
+        Items with modular sprites (i.e. syringe cases/vials/etc) now correctly
+        update appearance data when saved on a shuttle.
+    - type: Fix
+      message: >-
+        Sprite icons for spray painted items now correctly update appearance
+        data when saved on a shuttle.
+    - type: Fix
+      message: >-
+        Saving turbines on a shuttle should no longer result in them becoming
+        unanchorable on load.
+    - type: Fix
+      message: Avali now correctly bleed AvaliBlood.
+    - type: Fix
+      message: Characters with the Synthetic trait now correctly bleed SyntheticBlood.
+    - type: Fix
+      message: >-
+        Zombification now correctly results in zombified characters producing
+        ZombieBlood.
+    - type: Fix
+      message: >-
+        Zombification no longer results in bloodstreams resetting to 0/max-limit
+        for zombified characters.
+    - type: Fix
+      message: >-
+        PMC C-20r and PMC Vipers are no longer incorrectly labeled C3 and no
+        longer give FUCs on exchange.
+  id: 397
+  time: '2026-05-07T05:19:53.0000000+00:00'
