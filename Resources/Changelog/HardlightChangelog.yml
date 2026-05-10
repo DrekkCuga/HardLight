@@ -3740,3 +3740,9 @@ Entries:
       message: Updates engine to latest from upstream
   id: 401
   time: '2026-05-10T10:48:59.0000000+00:00'
+- author: DDoubleDee
+  changes:
+    - type: Tweak
+      message: Proto-Avali/Resomi now make emote sounds like normal avali/resomi
+  id: 402
+  time: '2026-05-10T10:49:58.0000000+00:00'
