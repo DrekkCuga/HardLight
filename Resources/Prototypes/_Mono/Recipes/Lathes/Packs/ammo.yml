@@ -179,6 +179,10 @@
   - AmmoBox23x75mmFlashbang
   - AmmoBox23x75mmPractice
   - AmmoBox23x75mmUranium
+  - AmmoBoxSmallEmpty
+  - AmmoBoxMediumEmpty
+  - AmmoBoxLargeEmpty
+  - AmmoBoxShotgunEmpty
 
 #Uranium recipes
 
@@ -425,6 +429,10 @@
   - Magazine9x19mmSubMachineGunTopMountedEmpty
   - Magazine57x28mmSubMachineGunTopMountedEmpty
   - Magazine46x30mmSubMachineGunTopMountedEmpty
+  - AmmoBoxSmallEmpty
+  - AmmoBoxMediumEmpty
+  - AmmoBoxLargeEmpty
+  - AmmoBoxShotgunEmpty
 #FMJ>
   - Magazine8x65mmSKR
   - AmmoBox8x65mmSKR
