@@ -296,7 +296,8 @@ namespace Content.Server.Database
                 traits.ToHashSet(),
                 loadouts,
                 company,
-                speciesLoadout); // Far Horizons
+                speciesLoadout, // Far Horizons
+                profile.CriminalRecordEntry ?? string.Empty); // HardLight
         }
 
         private static Profile ConvertProfiles(HumanoidCharacterProfile humanoid, int slot, Profile? profile = null)
@@ -312,6 +313,7 @@ namespace Content.Server.Database
 
             profile.CharacterName = humanoid.Name;
             profile.FlavorText = humanoid.FlavorText;
+            profile.CriminalRecordEntry = humanoid.CriminalRecordEntry; // HardLight
             profile.Species = humanoid.Species;
             profile.CustomSpecies = humanoid.CustomSpecies;
             profile.Age = humanoid.Age;
