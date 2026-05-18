@@ -4038,3 +4038,11 @@ Entries:
       message: Reduced range of phase shift light flickering by 40%
   id: 434
   time: '2026-05-18T18:23:02.0000000+00:00'
+- author: Typheus
+  changes:
+    - type: Fix
+      message: >-
+        High Security Door/Glass Airlock deconstruction instructions now show
+        proper steps
+  id: 435
+  time: '2026-05-18T18:23:43.0000000+00:00'
