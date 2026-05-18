@@ -125,7 +125,7 @@
     Telecrystal: 7 # HardLight: 35<7
   categories:
   - UplinkWearables
-  conditions:
-  - !type:BuyerSpeciesCondition
-    whitelist:
-    - Human
+  # conditions: # Hardlight: Speciesism bad
+  # - !type:BuyerSpeciesCondition
+  #   whitelist:
+  #   - Human
