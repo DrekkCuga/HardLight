@@ -4112,3 +4112,9 @@ Entries:
       message: Nullspace dephasing is now safer
   id: 443
   time: '2026-05-20T08:34:34.0000000+00:00'
+- author: Illumos
+  changes:
+    - type: Add
+      message: Removed colour limits across all species.
+  id: 444
+  time: '2026-05-20T08:35:02.0000000+00:00'
