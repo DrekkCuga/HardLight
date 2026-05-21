@@ -4172,3 +4172,9 @@ Entries:
       message: (Admin) The h-series of scale commands now work as intended.
   id: 451
   time: '2026-05-21T10:42:30.0000000+00:00'
+- author: re-silvered
+  changes:
+    - type: Fix
+      message: Fixed M90 GL not having a wielded sprite
+  id: 452
+  time: '2026-05-21T11:04:07.0000000+00:00'
