@@ -16,6 +16,7 @@
   - BoozeDispenserMachineCircuitboard
   - SodaDispenserMachineCircuitboard
   - ImpCoffeeMachineCircuitboard #imp
+  - NFCookingBag
 
 - type: technology
   id: MiscellaneousItemsOrganization

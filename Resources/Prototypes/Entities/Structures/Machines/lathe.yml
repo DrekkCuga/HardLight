@@ -424,6 +424,8 @@
     # WD EDIT END
     - ShuttleWeaponMaterials # HL
     - HLBags # HL: HardLight bag recipes
+    - NFCookingBagPack # Hardlight adds to protolathe research
+    - HLTacticalBagsPack
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - AdvancedAmmoRecipePack
