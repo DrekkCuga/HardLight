@@ -4224,3 +4224,9 @@ Entries:
       message: Moves the medipen tag to the correct file location
   id: 456
   time: '2026-05-24T00:02:17.0000000+00:00'
+- author: NotLivyathan
+  changes:
+    - type: Remove
+      message: Livyathan was ejected. Livyathan was not The Imposter.
+  id: 457
+  time: '2026-05-24T00:03:33.0000000+00:00'
