@@ -320,19 +320,14 @@ public sealed class StationPaySystem : EntitySystem
             _duePayoutsScratch.Add((uid, scheduledPayoutTime));
         }
 
-        // Remove all due entries; re-add at scheduledPayoutTime + PayoutDelay (matches prior semantics,
-        // including catch-up payouts when scheduled times are in the past). Since the not-due tail is
-        // already sorted ascending and the rescheduled times are also in ascending order
-        // (oldScheduled was ascending, and we add a constant), a 2-way merge into the OrderedDictionary
-        // preserves the global ascending invariant. The simplest correct approach: drop them all,
-        // pay each, then insert each rescheduled entry at the right position via Insert.
-        for (var i = 0; i < _duePayoutsScratch.Count; i++)
-            _scheduledPayouts.Remove(_duePayoutsScratch[i].Uid);
-
         for (var i = 0; i < _duePayoutsScratch.Count; i++)
         {
             var (uid, oldScheduled) = _duePayoutsScratch[i];
+
+            // PayoutFor validates that the entity is still part of the station-pay schedule,
+            // so do the payout before removing/reinserting the entry.
             var payoutSucceeded = PayoutFor(uid, PayoutDelay);
+            _scheduledPayouts.Remove(uid);
             var newScheduled = payoutSucceeded ? oldScheduled + PayoutDelay : oldScheduled;
 
             // Find insertion index in ascending order. Most rescheduled entries land at the end,
