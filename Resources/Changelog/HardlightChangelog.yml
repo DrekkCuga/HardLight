@@ -4480,3 +4480,9 @@ Entries:
       message: Over fifteen new vinyl tracks!
   id: 473
   time: '2026-06-01T01:37:36.0000000+00:00'
+- author: oksam
+  changes:
+    - type: Add
+      message: New links for Sec SOP/Space law
+  id: 474
+  time: '2026-06-01T01:40:16.0000000+00:00'
