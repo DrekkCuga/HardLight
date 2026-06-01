@@ -4446,3 +4446,31 @@ Entries:
         issues, and station pay
   id: 471
   time: '2026-05-29T19:08:08.0000000+00:00'
+- author: fenndragon
+  changes:
+    - type: Fix
+      message: Fixed missing techs
+    - type: Fix
+      message: Fixed missing recipes
+    - type: Fix
+      message: Fixed parented projectile velocity
+    - type: Fix
+      message: Fixed Apartments
+    - type: Fix
+      message: Fixed Mech weapon power
+    - type: Fix
+      message: Fixed blocked explosion location
+    - type: Fix
+      message: Fixed botany limitations
+    - type: Fix
+      message: 'Fixed AI station spawns. '
+    - type: Fix
+      message: Fixed Shield values
+    - type: Remove
+      message: Removed hostile Mono ship spawns temporarily
+    - type: Add
+      message: 'Added zoom feature to research UI '
+    - type: Add
+      message: 'Added faction comms to everyone '
+  id: 472
+  time: '2026-06-01T01:36:59.0000000+00:00'
