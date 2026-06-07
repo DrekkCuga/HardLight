@@ -59,6 +59,7 @@ using Robust.Server.Player;
 using Robust.Shared.Log;
 using Content.Shared.Shuttles.Components;
 using Content.Shared._HL.Shipyard;
+using Content.Server._Mono.Shipyard;
 
 // Suppress naming style rule for the _NF namespace prefix (project convention)
 #pragma warning disable IDE1006
@@ -68,6 +69,7 @@ namespace Content.Server._NF.Shipyard.Systems;
 public sealed partial class ShipyardSystem : SharedShipyardSystem
 {
     [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IServerPreferencesManager _prefManager = default!;
     [Dependency] private readonly AccessSystem _accessSystem = default!;
@@ -82,6 +84,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly ShuttleRecordsSystem _shuttleRecordsSystem = default!;
+    [Dependency] private readonly ShipyardDirectionSystem _shipyardDirection = default!;
 
     private static readonly Regex DeedRegex = new(@"\s*\([^()]*\)");
 
@@ -142,7 +145,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (!GetAvailableShuttles(shipyardConsoleUid, targetId: targetId).available.Contains(vessel.ID))
         {
             PlayDenySound(player, shipyardConsoleUid, component);
-            //_adminLogger.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(player):player} tried to purchase a vessel that was never available.");
+            _adminLogger.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(player):player} tried to purchase a vessel that was never available.");
             return;
         }
 
@@ -342,6 +345,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         // Ensure cleanup on ship sale
         EnsureComp<LinkedLifecycleGridParentComponent>(shuttleUid);
 
+        _shipyardDirection.SendShipDirectionMessage(player, shuttleUid);
+
         var sellValue = 0;
         if (TryComp<ShuttleDeedComponent>(targetId, out var deed))
             sellValue = GetDisplayedSellValue(shipyardConsoleUid, component, deed);
@@ -351,10 +356,10 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             SendPurchaseMessage(shipyardConsoleUid, player, name, secretChannel, secret: true);
 
         PlayConfirmSound(player, shipyardConsoleUid, component);
-        /* if (voucherUsed)
+        if (voucherUsed)
             _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} used {ToPrettyString(targetId)} to purchase shuttle {ToPrettyString(shuttleUid)} with a voucher via {ToPrettyString(shipyardConsoleUid)}");
         else
-            _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} used {ToPrettyString(targetId)} to purchase shuttle {ToPrettyString(shuttleUid)} for {vessel.Price} credits via {ToPrettyString(shipyardConsoleUid)}"); */
+            _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} used {ToPrettyString(targetId)} to purchase shuttle {ToPrettyString(shuttleUid)} for {vessel.Price} credits via {ToPrettyString(shipyardConsoleUid)}");
 
         // Adding the record to the shuttle records system makes them eligible to be copied.
         // Can be set on the component of the shipyard.
@@ -732,6 +737,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         EnsureComp<LinkedLifecycleGridParentComponent>(shuttleUid);
 
         var sellValue = 0;
+        _shipyardDirection.SendShipDirectionMessage(player, shuttleUid);
 
         // Send radio messages and update UI
         SendPurchaseMessage(uid, player, name, component.ShipyardChannel, secret: false);
@@ -761,7 +767,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         RefreshState(uid, balance, true, name, sellValue, targetId, (ShipyardConsoleUiKey)args.UiKey, false);
 
-        //_adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} loaded shuttle {ToPrettyString(shuttleUid)} from {(args.SourceFilePath ?? "YAML data")} via {ToPrettyString(uid)}");
+        _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} loaded shuttle {ToPrettyString(shuttleUid)} from {(args.SourceFilePath ?? "YAML data")} via {ToPrettyString(uid)}");
 
         // After a successful server-side load, instruct the client to delete their local YAML file.
         if (!string.IsNullOrWhiteSpace(args.SourceFilePath) && _player.TryGetSessionByEntity(player, out var session))
@@ -906,10 +912,10 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         EntityUid? refreshId = targetId;
 
-        /* if (voucherUsed)
+        if (voucherUsed)
             _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} used {ToPrettyString(targetId)} to sell {shuttleName} (purchased with voucher) via {ToPrettyString(uid)}");
         else
-            _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} used {ToPrettyString(targetId)} to sell {shuttleName} for {bill} credits via {ToPrettyString(uid)}"); */
+            _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} used {ToPrettyString(targetId)} to sell {shuttleName} for {bill} credits via {ToPrettyString(uid)}");
 
         // No uses on the voucher left, destroy it.
         if (voucher != null
