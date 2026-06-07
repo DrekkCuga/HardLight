@@ -1,0 +1,23 @@
+- type: loadout
+  id: MaidHeadbandTactical
+  price: 600
+  equipment:
+    head: ClothingHeadHatTacticalMaidHeadband
+
+- type: loadout
+  id: CatEars
+  price: 600
+  equipment:
+    head: ClothingHeadHatCatEars
+
+- type: loadout
+  id: BunnyEars
+  price: 600
+  equipment:
+    head: ClothingHeadHatBunny
+
+- type: loadout
+  id: DogEars
+  price: 600
+  equipment:
+    head: ClothingHeadHatDogEars

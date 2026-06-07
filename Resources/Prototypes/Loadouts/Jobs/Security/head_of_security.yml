@@ -79,3 +79,13 @@
   id: HeadofSecurityWinterCoat
   equipment:
     outerClothing: ClothingOuterWinterHoS
+
+- type: loadout # starlight start
+  id: HeadofSecurityBlackSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSBlack
+
+- type: loadout
+  id: HeadofSecurityBlackSkirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoSBlack

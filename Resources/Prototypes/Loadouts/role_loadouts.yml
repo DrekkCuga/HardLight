@@ -568,14 +568,22 @@
   groups:
   - GroupTankHarness
   - MantisHead
+  - MantisJumpsuit # Hardlight
   - ScientistBackpack
   - MantisOuterClothing
   - MantisShoes
   - MantisGloves
+# HardLight start: Add departmental NF-style loadouts
+  - ContractorForcedOuterClothing
+  - ContractorFace
   - ContractorGlasses
   - ContractorBoxSurvival
-  - Trinkets
-  - GroupSpeciesBreathTool
+  - ContractorWallet
+  - ContractorImplanter
+  - ContractorBackpackItems
+  - ContractorHandItems
+  - NFSpeciesSpecific
+  - ScienceForcedOuterClothing
 # HardLight end
 
 # Security

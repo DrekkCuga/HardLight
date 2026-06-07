@@ -17,6 +17,9 @@
   loadouts:
     - GeneticistJumpsuit
     - GeneticistJumpskirt
+  subgroups:
+  - MedicalJumpsuit # HL - Add departmental NF-style loadouts
+  - ContractorJumpsuit # HL - Add departmental NF-style loadouts
 
 - type: loadoutGroup
   id: GeneticistOuterClothing
@@ -26,6 +29,8 @@
   loadouts:
     - GeneticistLabcoat
     - GeneticistWintercoat
+  subgroups:
+  - ContractorOuterClothing # HL - Add departmental NF-style loadouts
 
 - type: loadoutGroup
   id: GeneticistBackpack
@@ -43,10 +48,15 @@
   loadouts:
     - GeneticistGlovesLatex
     - GeneticistGlovesNitrile
+  subgroups:
+  - ContractorGloves # HL - Add departmental NF-style loadouts
 
 - type: loadoutGroup
   id: GeneticistShoes
+  minLimit: 0 # Hardlight
   name: loadout-group-geneticist-shoes
   loadouts:
     - GeneticistShoesWhite
     - GeneticistShoesBlue
+  subgroups:
+  - ContractorShoes # HL - Add departmental NF-style loadouts

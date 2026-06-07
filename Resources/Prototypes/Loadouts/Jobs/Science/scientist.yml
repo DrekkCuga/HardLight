@@ -172,3 +172,8 @@
     proto: SeniorResearcher
   equipment:
     id: SeniorResearcherPDA
+
+- type: loadout # starlight
+  id: ScientistJumpskirtFormal
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtScientistFormal

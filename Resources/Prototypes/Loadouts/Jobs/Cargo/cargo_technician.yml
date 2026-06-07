@@ -42,3 +42,18 @@
   id: CargoWinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterCargo
+
+- type: loadout # starlight start
+  id: CargoTechnicianJumpsuitAlt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCargoAlt
+
+- type: loadout
+  id: CargoTechnicianJumpsuitFormal
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCargoFormal
+
+- type: loadout
+  id: CargoTechnicianJumpskirtFormal
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCargoFormal

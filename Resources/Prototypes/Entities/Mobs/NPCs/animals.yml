@@ -612,6 +612,7 @@
     - Trash
     - CannotSuicide
     - VimPilot
+    - WhitelistChameleon # hardlight :)
   - type: CanEscapeInventory
   - type: NpcFactionMember
     factions:

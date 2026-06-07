@@ -1,0 +1,11 @@
+- type: loadout
+  id: ContractorClothingShoesHeels
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT2
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 600
+  equipment:
+    shoes: ClothingShoesHighheelShoes

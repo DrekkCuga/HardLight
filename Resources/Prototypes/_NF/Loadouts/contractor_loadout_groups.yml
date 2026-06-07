@@ -70,6 +70,9 @@
   - ContractorClothingUniformJumpsuitLibrarian
   - ContractorClothingUniformJumpskirtLibrarian
   - ContractorClothingUniformJumpsuitReporter
+  - ContractorClothingUniformJumpskirtReporter # HL
+  - ContractorClothingUniformJumpsuitJournalist # HL
+  - ContractorClothingUniformJumpskirtJournalist # HL
   - ContractorClothingUniformJumpsuitBH
   - ContractorClothingUniformJumpskirtBH
   - ContractorClothingUniformJumpsuitBHGrey
@@ -211,7 +214,14 @@
   - ContractorClothingUniformJumpskirtBlueTurtleneckDress
   - ContractorClothingUniformJumpskirtYellowTurtleneckDress
   - ContractorClothingUniformJumpskirtYellowOldDress
-#_CS Start
+  # Hardlight start
+  - MaidUniform
+  - MaidUniformTactical
+  - MaidUniformLatex
+  - MaidUniformAlt
+  - MaidUniformAltAlt
+  # Hardlight end
+  # Coyote start
   - LoadoutCoolCoyoteClothesAcolyte
   - LoadoutCoolCoyoteClothesAfrMerc
   - LoadoutCoolCoyoteClothesArtisan
@@ -406,6 +416,7 @@
 - type: loadoutGroup
   id: ContractorBackpack
   name: loadout-group-contractor-backpack
+  minLimit: 0 # Hardlight
   loadouts:
   - ContractorClothingBackpackChameleonCiv
   - ContractorClothingBackpack
@@ -625,6 +636,7 @@
 
 - type: loadoutGroup
   id: ContractorShoes
+  minLimit: 0 # Hardlight
   name: loadout-group-contractor-shoes
   loadouts:
   - ContractorClothingShoesChameleonCiv
@@ -664,8 +676,15 @@
   - ContractorClothingShoeSlippersDuck
   - ContractorClothingShoesFlippers
   - ContractorClothingShoesBootsPunkRandomized # Punkish (Randomized visuals)
-  - ContractorClothingShoesBeeSocks # HL - Add lingerie to generic loadouts
-  - ContractorClothingShoesCoderSocks # HL - Add lingerie to generic loadouts
+  # Hardlight start
+  - ContractorClothingShoesBeeSocks
+  - ContractorClothingShoesCoderSocks
+  - DominantHeels
+  - LatexHeels
+  - LatexSocks
+  - KneeBoots
+  - ContractorClothingShoesHeels
+  # Hardlight end
   - ContractorClothingShoesDameDane
   - ContractorClothingShoesBootsWork
   - ContractorClothingShoesBootsCowboyBlack
@@ -712,6 +731,10 @@
   - ContractorClothingHeadHatCorpsoft
   - ContractorClothingHeadBandGrey
   - ContractorClothingHeadHatUshanka
+  - MaidHeadbandTactical
+  - CatEars
+  - BunnyEars
+  - DogEars
   - ContractorClothingHeadHatHardhatYellow
   - ContractorClothingHeadHatChef
   - ContractorClothingHeadHatCargosoft
@@ -772,7 +795,7 @@
 - type: loadoutGroup
   id: ContractorEars
   name: loadout-group-contractor-ears
-  minLimit: 1
+  minLimit: 0 # Hardlight
   maxLimit: 1
   loadouts:
   - ContractorClothingHeadsetGreyCommon
@@ -815,6 +838,7 @@
   - ContractorClothingHandsGlovesColorOrange
   - ContractorClothingHandsGlovesColorPurple
   - ContractorClothingHandsGlovesColorRed
+  - ContractorClothingHandsGlovesColorWhite # Hardlight: Moved here
   - ContractorClothingHandsBeeWarmers # HL - Add lingerie to generic loadouts
   - ContractorClothingHandsCoderWarmers # HL - Add lingerie to generic loadouts
   - ContractorClothingHandsGlovesBoxingGreen
@@ -823,7 +847,13 @@
   - ContractorClothingHandsGlovesBoxingYellow
   - ContractorClothingHandsCoderValidWarmers # HL - Add lingerie to generic loadouts
   - ContractorClothingHandsGlovesCaptain
-  - ContractorClothingHandsGlovesColorWhite
+  - PawsWhite
+  - PawsBrown
+  - PawsBlack
+  - PawsBlackWhite
+  - MaidGloves # Hardlight
+  - MaidGlovesLatex # Hardlight
+  - RedRegaliaGloves
 
 - type: loadoutGroup
   id: ContractorNeck
@@ -1044,6 +1074,49 @@
     # Posters
   - ContractorNFPosterCorporate
   - ContractorNFPosterContraband
+  # Hardlight start - BunnysuitBoxChemist
+  - BunnysuitBoxGenetics
+  - BunnysuitBoxPsychologist
+  - BunnysuitBoxHeadOfPersonnel
+  - BunnysuitBoxGreen
+  - BunnysuitBoxLawTeal
+  - BunnysuitBoxCaptain
+  - BunnysuitBoxSyndie
+  - BunnysuitBoxChef
+  - BunnysuitBoxRobotics
+  - BunnysuitBoxChiefMedicalOfficer
+  - BunnysuitBoxRed
+  - BunnysuitBoxCrimsonGold
+  - BunnysuitBoxPrisoner
+  - BunnysuitBoxMime
+  - BunnysuitBoxDoctor
+  - BunnysuitBoxEngineer
+  - BunnysuitBoxLawRed
+  - BunnysuitBoxBar
+  - BunnysuitBoxCoroner
+  - BunnysuitBoxQuartermaster
+  - BunnysuitBoxUSSP
+  - BunnysuitBoxUnionJack
+  - BunnysuitBoxCrimson
+  - BunnysuitBoxCrimsonWhite
+  - BunnysuitBoxJanitor
+  - BunnysuitBoxNetrunner
+  - BunnysuitBoxScience
+  - BunnysuitBoxClown
+  - BunnysuitBoxAtmos
+  - BunnysuitBoxChaplain
+  - BunnysuitBoxParamedic
+  - BunnysuitBoxTeal
+  - BunnysuitBoxLiberty
+  - BunnysuitBoxCargo
+  - BunnysuitBoxResearchDirector
+  - BunnysuitBoxMail
+  - BunnysuitBoxLawBlack
+  - BunnysuitBoxVirology
+  - BunnysuitBoxBotanist
+  - BunnysuitBoxChiefEngineer
+  - BunnysuitBoxMiner
+  # Hardlight end
 
 - type: loadoutGroup
   id: ContractorHandItems

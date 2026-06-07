@@ -53,3 +53,13 @@
   id: ResearchDirectorWintercoat
   equipment:
     outerClothing: ClothingOuterWinterRD
+
+- type: loadout # starlight start
+  id: RDClassicalJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRDClassical
+
+- type: loadout
+  id: RDClassicalJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRDClassical

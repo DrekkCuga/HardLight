@@ -68,3 +68,13 @@
   id: HoPWintercoat
   equipment:
     outerClothing: ClothingOuterWinterHoP
+
+- type: loadout # starlight start
+  id: HoPTurtleneckJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoPTurtleneck
+
+- type: loadout
+  id: HoPTurtleneckJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoPTurtleneck

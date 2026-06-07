@@ -1,0 +1,35 @@
+- type: loadout
+  id: ContractorClothingUniformJumpskirtReporter
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT1
+  hideEffects:
+  - !type:GroupLoadoutEffect # HL - Station roles do not get wrong-departmental clothes
+    proto: HLNotStation
+  price: 500
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtReporter
+
+- type: loadout
+  id: ContractorClothingUniformJumpsuitJournalist
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT1
+  hideEffects:
+  - !type:GroupLoadoutEffect # HL - Station roles do not get wrong-departmental clothes
+    proto: HLNotStation
+  price: 500
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitJournalist
+
+- type: loadout
+  id: ContractorClothingUniformJumpskirtJournalist
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT1
+  hideEffects:
+  - !type:GroupLoadoutEffect # HL - Station roles do not get wrong-departmental clothes
+    proto: HLNotStation
+  price: 500
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtJournalist

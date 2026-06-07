@@ -1,0 +1,40 @@
+- type: entity
+  parent: ClothingHandsGlovesCombat
+  id: ClothingHandsSalvageMercGlovesCombat
+  name: scrapper combat gloves
+  description: High-quality insulated gloves that provide protection while salvaging.
+  components:
+    - type: Sprite
+      sprite: _Starlight/Clothing/Hands/Gloves/salvage.rsi
+    - type: Clothing
+      sprite: _Starlight/Clothing/Hands/Gloves/salvage.rsi
+    - type: Fiber
+      fiberMaterial: fibers-insulative
+      fiberColor: fibers-brown
+
+- type: entity
+  parent: ClothingHandsButcherable
+  id: RedRegaliaGloves
+  name: red regalia gloves
+  description: A pair of fancy red gloves like a mafiaoso would wear.
+  components:
+  - type: Sprite
+    sprite: _Starlight/Clothing/Hands/Gloves/red_regalia.rsi
+  - type: Clothing
+    sprite: _Starlight/Clothing/Hands/Gloves/red_regalia.rsi
+  - type: Fiber
+    fiberColor: fibers-red
+  - type: FingerprintMask
+
+- type: entity
+  parent: ClothingHandsGlovesSyntheticBase
+  id: ClothingHandsMaidGlovesElegant
+  name: elegant maid gloves
+  description: Pristine maid gloves, like any self-respecting maid should possess.
+  components:
+  - type: Sprite
+    sprite: _Starlight/Clothing/Hands/Gloves/elegantmaidgloves.rsi
+  - type: Clothing
+    sprite: _Starlight/Clothing/Hands/Gloves/elegantmaidgloves.rsi
+  - type: Fiber
+    fiberColor: fibers-white

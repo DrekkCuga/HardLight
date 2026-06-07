@@ -1,0 +1,29 @@
+- type: loadout
+  id: MaidUniform
+  price: 600
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantMaid
+
+- type: loadout
+  id: MaidUniformTactical
+  price: 600
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTacticalMaid
+
+- type: loadout
+  id: MaidUniformLatex
+  price: 600
+  equipment:
+    jumpsuit: MaidUniformLatex
+
+- type: loadout
+  id: MaidUniformAlt
+  price: 600
+  equipment:
+    jumpsuit: MaidUniform
+
+- type: loadout
+  id: MaidUniformAltAlt
+  price: 600
+  equipment:
+    jumpsuit: MaidUniformAlt

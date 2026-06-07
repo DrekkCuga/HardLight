@@ -1,0 +1,65 @@
+- type: loadout
+  id: RedRegaliaGloves
+  price: 1500
+  equipment:
+    gloves: RedRegaliaGloves
+
+- type: loadout
+  id: PawsWhite
+  price: 600
+  equipment:
+    gloves: ClothingHandsCatPawsWhite
+
+- type: loadout
+  id: PawsBrown
+  equipment:
+    gloves: ClothingHandsCatPawsBrown
+  price: 600
+
+- type: loadout
+  id: PawsBlack
+  price: 600
+  equipment:
+    gloves: ClothingHandsCatPawsBlack
+
+- type: loadout
+  id: PawsBlackWhite
+  price: 600
+  equipment:
+    gloves: ClothingHandsCatPawsBlackWhite
+
+- type: loadout
+  id: PawsWhiteInsulated
+  price: 600
+  equipment:
+    gloves: ClothingHandsCatPawsWhiteInsulated
+
+- type: loadout
+  id: PawsBrownInsulated
+  price: 600
+  equipment:
+    gloves: ClothingHandsCatPawsBrownInsulated
+
+- type: loadout
+  id: PawsBlackInsulated
+  price: 600
+  equipment:
+    gloves: ClothingHandsCatPawsBlackInsulated
+
+- type: loadout
+  id: PawsBlackWhiteInsulated
+  price: 600
+  equipment:
+    gloves: ClothingHandsCatPawsBlackWhiteInsulated
+
+- type: loadout
+  id: MaidGloves
+  price: 600
+  equipment:
+    gloves: MaidGloves
+
+- type: loadout
+  id: MaidGlovesLatex
+  price: 600
+  equipment:
+    gloves: MaidGlovesLatex

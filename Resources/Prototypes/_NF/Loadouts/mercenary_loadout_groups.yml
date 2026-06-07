@@ -113,6 +113,10 @@
   - MercenaryClothingHandsGlovesMercFingerless
   - MercenaryClothingHandsMercenaryGlovesCombat
   - MercenaryClothingHandsGlovesCombat
+  - PawsWhiteInsulated
+  - PawsBrownInsulated
+  - PawsBlackInsulated
+  - PawsBlackWhiteInsulated
   subgroups:
   - PilotGloves
   - ContractorGloves

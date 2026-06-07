@@ -199,3 +199,23 @@
   storage:
     back:
     - Syringe
+
+- type: loadout # starlight start
+  id: CoronerJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCoroner
+
+- type: loadout
+  id: CoronerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCoroner
+
+- type: loadout
+  id: CoronerJumpsuitAlt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCoronerAlt
+
+- type: loadout
+  id: NurseJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSuitNurse

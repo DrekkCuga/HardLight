@@ -1,0 +1,23 @@
+- type: loadout
+  id: DominantHeels
+  price: 600
+  equipment:
+    shoes: DominantHeels
+
+- type: loadout
+  id: LatexHeels
+  price: 600
+  equipment:
+    shoes: LatexHeels
+
+- type: loadout
+  id: LatexSocks
+  price: 600
+  equipment:
+    shoes: LatexSocks
+
+- type: loadout
+  id: KneeBoots
+  price: 600
+  equipment:
+    shoes: KneeBoots

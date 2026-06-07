@@ -172,7 +172,7 @@
     accent: MobsterAccent
 
 - type: entity
-  parent: [ ClothingHeadBase, BaseC3SyndicateContraband ] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband
+  parent: [ ClothingHeadBase ] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband ## Hardlight: why tf is this c3
   id: ClothingHeadHatCatEars
   name: cat ears
   description: "NYAH!"
@@ -222,7 +222,7 @@
   parent: ClothingHeadBase
   id: ClothingHeadHatDogEars
   name: doggy ears
-  description: Only for good boys.
+  description: Only for good doggies. # Hardlight: Ew, gendered
   categories: [ DoNotMap ]
   components:
   - type: Sprite

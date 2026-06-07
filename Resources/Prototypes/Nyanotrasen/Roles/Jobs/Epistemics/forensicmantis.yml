@@ -63,15 +63,15 @@
   # subGear:
   # - ForensicMantisPlasmamanGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitMantis
+    # jumpsuit: ClothingUniformJumpsuitMantis # Hardlight
     # back: ClothingBackpackScience
     # shoes: ClothingShoesBootsMantis
     # head: ClothingHeadHatFezMantis
     id: ForensicMantisPDA
-    eyes: ClothingEyesGlassesSunglasses
+    # eyes: ClothingEyesGlassesSunglasses # Hardlight
     ears: ClothingHeadsetScience # Delta V: Mantis is part of Epistemics
-    gloves: ClothingHandsGlovesColorWhite
-    outerClothing: ClothingOuterCoatMantis
+    # gloves: ClothingHandsGlovesColorWhite # Hardlight
+    # outerClothing: ClothingOuterCoatMantis # Hardlight
     belt: ClothingBeltMantis
     pocket1: BookPsionicsGuidebook
   storage:

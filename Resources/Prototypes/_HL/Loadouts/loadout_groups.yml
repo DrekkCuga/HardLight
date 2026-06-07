@@ -287,6 +287,9 @@
   name: loadout-group-contractor-jumpsuit
   loadouts:
   - CargoClothingJumpsuitThong
+  - CargoTechnicianJumpsuitAlt
+  - CargoTechnicianJumpsuitFormal
+  - CargoTechnicianJumpskirtFormal
   subgroups:
   - ContractorJumpsuit
 
@@ -344,6 +347,9 @@
   name: loadout-group-contractor-jumpsuit
   loadouts:
   - SalvageSpecialistClothingJumpsuit
+  - ClothingUniformJumpskirtCargoSalvage
+  - ClothingUniformJumpskirtCargoSalvageFormal
+  - ClothingUniformJumpsuitSalvageFormal
   subgroups:
   - CargoJumpsuit
   - MercenaryJumpsuit
@@ -381,6 +387,10 @@
   loadouts:
   - EngineeringClothingHandsGlovesColorYellow
   - EngineeringClothingHandsWarmers
+  - PawsWhiteInsulated
+  - PawsBrownInsulated
+  - PawsBlackInsulated
+  - PawsBlackWhiteInsulated
   subgroups:
   - ContractorGloves
 
@@ -432,6 +442,7 @@
   name: loadout-group-contractor-jumpsuit
   loadouts:
   - ScienceClothingJumpsuitThong
+  - ScientistJumpskirtFormal
   subgroups:
   - ContractorJumpsuit
 
@@ -470,6 +481,9 @@
   minLimit: 0
   loadouts:
   - MantisFezHat
+  subgroups:
+  - ScientistHead
+  - ContractorHead
 
 - type: loadoutGroup
   id: MantisJumpsuit
@@ -477,6 +491,9 @@
   loadouts:
   - MantisJumpsuit
   - MantisJumpskirt
+  subgroups:
+  - ScienceJumpsuit
+  - ContractorJumpsuit
 
 - type: loadoutGroup
   id: MantisOuterClothing
@@ -484,12 +501,18 @@
   minLimit: 0
   loadouts:
   - MantisCoat
+  subgroups:
+  - ScientistOuterClothing
+  - ContractorOuterClothing
 
 - type: loadoutGroup
   id: MantisShoes
   name: loadout-group-mantis-shoes
   loadouts:
   - MantisBoots
+  subgroups:
+  - ScienceShoes
+  - ContractorShoes
 
 - type: loadoutGroup
   id: MantisGloves
@@ -497,6 +520,9 @@
   minLimit: 0
   loadouts:
   - WhiteGloves
+  subgroups:
+  - ScienceGloves
+  - ContractorGloves
 
 ## Security
 
@@ -507,6 +533,10 @@
   loadouts:
   - SecurityClothingHandsGlovesCombat
   - SecurityClothingHandsWarmers
+  - PawsWhiteInsulated
+  - PawsBrownInsulated
+  - PawsBlackInsulated
+  - PawsBlackWhiteInsulated
   subgroups:
   - ContractorGloves
   fallbacks:
@@ -530,6 +560,10 @@
   loadouts:
   - SecurityClothingHandsGlovesCombat
   - HeadofSecurityClothingHandsWarmers
+  - PawsWhiteInsulated
+  - PawsBrownInsulated
+  - PawsBlackInsulated
+  - PawsBlackWhiteInsulated
   subgroups:
   - ContractorGloves
   fallbacks:
@@ -609,6 +643,10 @@
   name: loadout-group-contractor-jumpsuit
   loadouts:
   - MedicalClothingJumpsuitThong
+  - NurseJumpskirt
+  - CoronerJumpskirt
+  - CoronerJumpsuit
+  - CoronerJumpsuitAlt
   subgroups:
   - ContractorJumpsuit
 

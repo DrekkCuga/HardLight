@@ -1,0 +1,293 @@
+- type: loadout
+  id: BunnysuitBoxChemist
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxChemist
+
+- type: loadout
+  id: BunnysuitBoxGenetics
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxGenetics
+
+- type: loadout
+  id: BunnysuitBoxPsychologist
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxPsychologist
+
+- type: loadout
+  id: BunnysuitBoxHeadOfPersonnel
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxHeadOfPersonnel
+
+- type: loadout
+  id: BunnysuitBoxGreen
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxGreen
+
+- type: loadout
+  id: BunnysuitBoxLawTeal
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxLawTeal
+
+- type: loadout
+  id: BunnysuitBoxCaptain
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxCaptain
+
+- type: loadout
+  id: BunnysuitBoxSyndie
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxSyndie
+
+- type: loadout
+  id: BunnysuitBoxChef
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxChef
+
+- type: loadout
+  id: BunnysuitBoxRobotics
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxRobotics
+
+- type: loadout
+  id: BunnysuitBoxChiefMedicalOfficer
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxChiefMedicalOfficer
+
+- type: loadout
+  id: BunnysuitBoxRed
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxRed
+
+- type: loadout
+  id: BunnysuitBoxCrimsonGold
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxCrimsonGold
+
+- type: loadout
+  id: BunnysuitBoxPrisoner
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxPrisoner
+
+- type: loadout
+  id: BunnysuitBoxMime
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxMime
+
+- type: loadout
+  id: BunnysuitBoxDoctor
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxDoctor
+
+- type: loadout
+  id: BunnysuitBoxEngineer
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxEngineer
+
+- type: loadout
+  id: BunnysuitBoxLawRed
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxLawRed
+
+- type: loadout
+  id: BunnysuitBoxBar
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxBar
+
+- type: loadout
+  id: BunnysuitBoxCoroner
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxCoroner
+
+- type: loadout
+  id: BunnysuitBoxQuartermaster
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxQuartermaster
+
+- type: loadout
+  id: BunnysuitBoxUSSP
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxUSSP
+
+- type: loadout
+  id: BunnysuitBoxUnionJack
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxUnionJack
+
+- type: loadout
+  id: BunnysuitBoxCrimson
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxCrimson
+
+- type: loadout
+  id: BunnysuitBoxCrimsonWhite
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxCrimsonWhite
+
+- type: loadout
+  id: BunnysuitBoxJanitor
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxJanitor
+
+- type: loadout
+  id: BunnysuitBoxNetrunner
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxNetrunner
+
+- type: loadout
+  id: BunnysuitBoxScience
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxScience
+
+- type: loadout
+  id: BunnysuitBoxClown
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxClown
+
+- type: loadout
+  id: BunnysuitBoxAtmos
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxAtmos
+
+- type: loadout
+  id: BunnysuitBoxChaplain
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxChaplain
+
+- type: loadout
+  id: BunnysuitBoxParamedic
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxParamedic
+
+- type: loadout
+  id: BunnysuitBoxTeal
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxTeal
+
+- type: loadout
+  id: BunnysuitBoxLiberty
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxLiberty
+
+- type: loadout
+  id: BunnysuitBoxCargo
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxCargo
+
+- type: loadout
+  id: BunnysuitBoxResearchDirector
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxResearchDirector
+
+- type: loadout
+  id: BunnysuitBoxMail
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxMail
+
+- type: loadout
+  id: BunnysuitBoxLawBlack
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxLawBlack
+
+- type: loadout
+  id: BunnysuitBoxVirology
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxVirology
+
+- type: loadout
+  id: BunnysuitBoxBotanist
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxBotanist
+
+- type: loadout
+  id: BunnysuitBoxChiefEngineer
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxChiefEngineer
+
+- type: loadout
+  id: BunnysuitBoxMiner
+  price: 2000
+  storage:
+    back:
+    - BunnysuitBoxMiner

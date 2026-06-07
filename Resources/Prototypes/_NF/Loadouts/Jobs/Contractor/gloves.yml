@@ -210,13 +210,13 @@
   equipment:
     gloves: ClothingHandsGlovesCaptain
 
-#T3 for lols
+#T3 for lols ## frontier, what the fuck are you on - sincerely hardlight
 - type: loadout
   id: ContractorClothingHandsGlovesColorWhite
   effects:
   - !type:GroupLoadoutEffect
     proto: ContractorT3
-  price: 2000
+  price: 600 # see above lmao
   equipment:
     gloves: ClothingHandsGlovesColorWhite
 

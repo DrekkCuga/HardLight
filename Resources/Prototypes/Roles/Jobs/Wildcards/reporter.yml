@@ -18,7 +18,7 @@
 - type: startingGear
   id: ReporterGear
   equipment:
-    shoes: ClothingShoesColorWhite
+    # shoes: ClothingShoesColorWhite # Hardlight: remove this in favour of loadout option
     id: ReporterPDA
     ears: ClothingHeadsetAltRadioHost
   storage:

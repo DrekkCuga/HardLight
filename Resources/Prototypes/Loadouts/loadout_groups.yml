@@ -126,6 +126,8 @@
   - CaptainFormalSuit
   - CaptainFormalSkirt
   - CaptainClothingJumpsuitThong # HL - Add lingerie
+  - CapTurtleneckJumpskirt # Hardlight
+  - CapTurtleneckJumpsuit # Hardlight
   subgroups:
   - ContractorJumpsuit # HL - Add departmental NF-style loadouts
 
@@ -153,6 +155,7 @@
 - type: loadoutGroup
   id: CaptainOuterClothing
   name: loadout-group-captain-outerclothing
+  minLimit: 0 # Hardlight
   loadouts:
   - CaptainOuterClothing
   - CaptainWintercoat
@@ -175,6 +178,8 @@
   - HoPJumpsuit
   - HoPJumpskirt
   - CommandClothingJumpsuitThong # HL - Add lingerie
+  - HoPTurtleneckJumpsuit # starlight
+  - HoPTurtleneckJumpskirt # starlight
   subgroups:
   - ContractorJumpsuit # HL - Add departmental NF-style loadouts
 
@@ -258,6 +263,7 @@
 
 - type: loadoutGroup
   id: PassengerShoes
+  minLimit: 0 # Hardlight
   name: loadout-group-passenger-shoes
   loadouts:
   - BlackShoes
@@ -748,6 +754,7 @@
 - type: loadoutGroup
   id: QuartermasterShoes
   name: loadout-group-quartermaster-shoes
+  minLimit: 0 # Hardlight
   loadouts:
   - BrownShoes
   - QuartermasterClothingShoesWinter
@@ -829,6 +836,7 @@
 
 - type: loadoutGroup
   id: SalvageSpecialistShoes
+  minLimit: 0 # Hardlight
   name: loadout-group-salvage-specialist-shoes
   loadouts:
   - SalvageBoots
@@ -886,6 +894,7 @@
 
 - type: loadoutGroup
   id: ChiefEngineerShoes
+  minLimit: 0 # Hardlight
   name: loadout-group-chief-engineer-shoes
   loadouts:
   - BrownShoes
@@ -952,6 +961,7 @@
 
 - type: loadoutGroup
   id: StationEngineerShoes
+  minLimit: 0 # Hardlight
   name: loadout-group-station-engineer-shoes
   loadouts:
   - WorkBoots
@@ -999,6 +1009,7 @@
 
 - type: loadoutGroup
   id: AtmosphericTechnicianShoes
+  minLimit: 0 # Hardlight
   name: loadout-group-atmospheric-technician-shoes
   loadouts:
   - WhiteShoes
@@ -1041,6 +1052,8 @@
   loadouts:
   - ResearchDirectorJumpsuit
   - ResearchDirectorJumpskirt
+  - RDClassicalJumpsuit # Starlight
+  - RDClassicalJumpskirt # Starlight
   subgroups:
   - ScienceJumpsuit # HL - Add departmental NF-style loadouts
   - ContractorJumpsuit # HL - Add departmental NF-style loadouts
@@ -1057,6 +1070,7 @@
 
 - type: loadoutGroup
   id: ResearchDirectorShoes
+  minLimit: 0 # Hardlight
   name: loadout-group-research-director-shoes
   loadouts:
   - BrownShoes
@@ -1127,6 +1141,7 @@
 
 - type: loadoutGroup
   id: ScientistShoes
+  minLimit: 0 # Hardlight
   name: loadout-group-scientist-shoes
   loadouts:
   - WhiteShoes
@@ -1189,6 +1204,8 @@
   - HeadofSecurityFormalSuit
   - HeadofSecurityFormalSkirt
   - HeadofSecurityClothingJumpsuitThong # HL - Add lingerie
+  - HeadofSecurityBlackSuit # Hardlight
+  - HeadofSecurityBlackSkirt # Hardlight
   subgroups:
   - ContractorJumpsuit # HL - Add departmental NF-style loadouts
 
@@ -1204,6 +1221,7 @@
 
 - type: loadoutGroup
   id: HeadofSecurityOuterClothing
+  minLimit: 0 # Hardlight
   name: loadout-group-head-of-security-outerclothing
   loadouts:
   - HeadofSecurityCoat
@@ -1234,6 +1252,7 @@
 
 - type: loadoutGroup
   id: WardenOuterClothing
+  minLimit: 0 # Hardlight
   name: loadout-group-warden-outerclothing
   loadouts:
   - WardenCoat
@@ -1280,6 +1299,7 @@
 
 - type: loadoutGroup
   id: SecurityBelt
+  minLimit: 0 # Hardlight
   name: loadout-group-security-belt
   loadouts:
   - SecurityBelt
@@ -1287,6 +1307,7 @@
 
 - type: loadoutGroup
   id: SecurityOuterClothing
+  minLimit: 0 # Hardlight
   name: loadout-group-security-outerclothing
   loadouts:
   - ArmorVest
@@ -1298,6 +1319,7 @@
 
 - type: loadoutGroup
   id: SecurityShoes
+  minLimit: 0 # Hardlight
   name: loadout-group-security-shoes
   loadouts:
   - JackBoots
@@ -1347,6 +1369,7 @@
 - type: loadoutGroup
   id: DetectiveOuterClothing
   name: loadout-group-detective-outerclothing
+  minLimit: 0 # Hardlight
   loadouts:
   - DetectiveArmorVest
   - DetectiveCoat
@@ -1427,6 +1450,7 @@
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerShoes
+  minLimit: 0 # Hardlight
   name: loadout-group-chief-medical-officer-shoes
   loadouts:
   - BrownShoes
@@ -1488,6 +1512,7 @@
 
 - type: loadoutGroup
   id: MedicalShoes
+  minLimit: 0 # Hardlight
   name: loadout-group-medical-doctor-shoes
   loadouts:
   - WhiteShoes
@@ -1549,6 +1574,7 @@
   - ChemistJumpskirt
   - ChemistClothingJumpsuitThong # HL - Add lingerie
   subgroups:
+  - MedicalJumpsuit # HL - Add departmental NF-style loadouts
   - ContractorJumpsuit # HL - Add departmental NF-style loadouts
 
 - type: loadoutGroup
@@ -1589,6 +1615,7 @@
   - ParamedicJumpskirt
   - ParamedicClothingJumpsuitThong # HL - Add lingerie
   subgroups:
+  - MedicalJumpsuit # HL - Add departmental NF-style loadouts
   - ContractorJumpsuit # HL - Add departmental NF-style loadouts
 
 - type: loadoutGroup
@@ -1603,6 +1630,7 @@
 
 - type: loadoutGroup
   id: ParamedicShoes
+  minLimit: 0 # Hardlight
   name: loadout-group-paramedic-shoes
   loadouts:
   - BlueShoes
@@ -1644,6 +1672,8 @@
   loadouts:
   - ReporterJumpsuit
   - JournalistJumpsuit
+  - ReporterJumpskirt
+  - JournalistJumpskirt
   subgroups:
   - ServiceJumpsuit # HL - Add departmental NF-style loadouts
   - ContractorJumpsuit # HL - Add departmental NF-style loadouts
