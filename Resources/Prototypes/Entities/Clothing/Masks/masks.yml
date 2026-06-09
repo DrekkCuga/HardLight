@@ -52,6 +52,7 @@
   - type: Clothing
     sprite: Clothing/Mask/gassyndicate.rsi
   - type: FlashImmunity
+    blocksSpecialVision: false # Hardlight: Syndicate gas masks don't block NV/thermals
   - type: EyeProtection
   - type: Armor
     modifiers:
@@ -437,6 +438,7 @@
     - Snout
     hideOnToggle: true
   - type: FlashImmunity
+    blocksSpecialVision: false # Hardlight: ERT gas masks don't block NV/thermals
   - type: EyeProtection
   - type: Armor
     modifiers:
