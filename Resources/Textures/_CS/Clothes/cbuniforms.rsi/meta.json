@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": " Taken coyote-frontier which is from Coyote Bayou modified by VividPups to had Blank | gearharness icon added by amareyeen from skyrat station",
+  "copyright": " Taken coyote-frontier which is from Coyote Bayou modified by VividPups to had Blank | gearharness icon added by amareyeen from skyrat station, secslutskirtblue and secstripperblue recolor by Vonte",
   "copyright": "Unknown",
   "size": {
     "x": 32,
@@ -722,8 +722,16 @@
       "name": "secslutskirtpink",
       "directions": 4
     },
+        {
+      "name": "secslutskirtblue",
+      "directions": 4
+    },
     {
       "name": "secstripper",
+      "directions": 4
+    },
+        {
+      "name": "secstripperblue",
       "directions": 4
     },
     {

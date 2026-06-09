@@ -1,3 +1,4 @@
+using Content.Server._NF.PacifiedZone;
 using Content.Server.Administration.Logs;
 using Content.Server.Damage.Components;
 using Content.Server.Weapons.Ranged.Systems;
@@ -37,6 +38,10 @@ namespace Content.Server.Damage.Systems
             if (TerminatingOrDeleted(args.Target))
                 return;
 
+            // Hardlight: Pacifists can't hurt with throws
+            if (args.User != null && (TryComp<PacifiedComponent>(args.User, out _) || TryComp<PacifiedByZoneComponent>(args.User, out _)))
+                return;
+
             var dmg = _damageable.TryChangeDamage(args.Target, component.Damage * _damageable.UniversalThrownDamageModifier, component.IgnoreResistances, origin: args.Component.Thrower);
 
             // Log damage only for mobs. Useful for when people throw spears at each other, but also avoids log-spam when explosions send glass shards flying.
@@ -66,7 +71,7 @@ namespace Content.Server.Damage.Systems
         /// </summary>
         private void OnAttemptPacifiedThrow(Entity<DamageOtherOnHitComponent> ent, ref AttemptPacifiedThrowEvent args)
         {
-            args.Cancel("pacified-cannot-throw");
+            // args.Cancel("pacified-cannot-throw"); // Hardlight: NOP
         }
     }
 }

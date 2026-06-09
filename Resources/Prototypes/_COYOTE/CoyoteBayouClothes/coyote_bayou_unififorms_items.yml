@@ -2379,6 +2379,24 @@
 
 - type: entity
   parent: CoolCoyoteClothes
+  id: CoolCoyoteClothesSecslutskirtblue
+  name: sexy bluesec skirt
+  description: |
+  components:
+  - type: Sprite
+    overrideDir: South
+    enableOverrideDir: true
+    sprite: _CS/Clothes/cbuniforms.rsi
+    layers:
+    - state: secslutskirtblue
+  - type: Clothing
+    sprite: _CS/Clothes/cbuniforms.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: secslutskirtblue
+
+- type: entity
+  parent: CoolCoyoteClothes
   id: CoolCoyoteClothesSecslutskirtpink
   name: sexy mauvesec skirt
   description: |
@@ -2412,6 +2430,24 @@
     clothingVisuals:
       jumpsuit:
       - state: secstripper
+
+- type: entity
+  parent: CoolCoyoteClothes
+  id: CoolCoyoteClothesSecstripperblue
+  name: sexy accurate security stripper
+  description: |
+  components:
+  - type: Sprite
+    overrideDir: South
+    enableOverrideDir: true
+    sprite: _CS/Clothes/cbuniforms.rsi
+    layers:
+    - state: secstripperblue
+  - type: Clothing
+    sprite: _CS/Clothes/cbuniforms.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: secstripperblue
 
 - type: entity
   parent: CoolCoyoteClothes

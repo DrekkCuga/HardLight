@@ -22,3 +22,8 @@
   id: nebuladream
   flavorType: Complex
   description: flavor-complex-nebula-dream
+
+- type: flavor
+  id: breast-milk
+  flavorType: complex
+  description: flavor-complex-breast-milk
