@@ -4548,3 +4548,11 @@ Entries:
       message: More entities, including scurrets, are now pacified at CC.
   id: 482
   time: '2026-06-09T10:51:11.0000000+00:00'
+- author: SeaborneProto
+  changes:
+    - type: Add
+      message: Added breast milk reagent!
+    - type: Tweak
+      message: Milkable traits now use Breast Milk!
+  id: 483
+  time: '2026-06-09T10:55:03.0000000+00:00'
