@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 10 * * *'
+env:
+  CHANGELOG_DIR: ${{ vars.CHANGELOG_DIR }}
 
 jobs:
  publish_changelog:
