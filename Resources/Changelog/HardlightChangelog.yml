@@ -4568,3 +4568,9 @@ Entries:
       message: Lights on CC now won't be all broken after the 24 hours or so
   id: 484
   time: '2026-06-09T10:58:44.0000000+00:00'
+- author: Drekk
+  changes:
+    - type: Remove
+      message: Test PR 1
+  id: 485
+  time: '2026-06-09T13:09:18.0000000+00:00'
