@@ -16,7 +16,7 @@ public sealed partial class MilkProducerComponent : Component
     public string SolutionName = "breasts";
 
     [DataField]
-    public ProtoId<ReagentPrototype> ReagentId = "Milk";
+    public ProtoId<ReagentPrototype> ReagentId = "Breast-Milk";
 
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("maxVol")]

@@ -4518,3 +4518,53 @@ Entries:
       message: AI Remote Devices now incorporates shuntable borgs
   id: 478
   time: '2026-06-07T05:23:06.0000000+00:00'
+- author: Drekk
+  changes:
+    - type: Fix
+      message: Fixed Changelog missing some changes!
+    - type: Fix
+      message: Fixed Changelog not showing in Discord
+  id: 479
+  time: '2026-06-09T10:40:08.0000000+00:00'
+- author: Vonte
+  changes:
+    - type: Add
+      message: added 2 new accurate security variants of clothing.
+    - type: Tweak
+      message: >-
+        changed leftover security gear that still was red from before the
+        palette change (For full list check the PR).
+  id: 480
+  time: '2026-06-09T10:44:47.0000000+00:00'
+- author: Illumos
+  changes:
+    - type: Add
+      message: Pacifists can now throw things without hurting people.
+  id: 481
+  time: '2026-06-09T10:45:17.0000000+00:00'
+- author: Typheus
+  changes:
+    - type: Fix
+      message: More entities, including scurrets, are now pacified at CC.
+  id: 482
+  time: '2026-06-09T10:51:11.0000000+00:00'
+- author: SeaborneProto
+  changes:
+    - type: Add
+      message: Added breast milk reagent!
+    - type: Tweak
+      message: Milkable traits now use Breast Milk!
+  id: 483
+  time: '2026-06-09T10:55:03.0000000+00:00'
+- author: rtasva
+  changes:
+    - type: Add
+      message: >-
+        CC has maps, beacons, bluespace flashers, borg rechargers, & cameras
+        now!
+    - type: Add
+      message: Bathrooms, Sauna, Brig, Briefing room, and more to CC!
+    - type: Fix
+      message: Lights on CC now won't be all broken after the 24 hours or so
+  id: 484
+  time: '2026-06-09T10:58:44.0000000+00:00'

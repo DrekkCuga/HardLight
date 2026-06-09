@@ -2,6 +2,7 @@ name: PR Changelogs
 concurrency:
   group: commit_action
   cancel-in-progress: false
+  queue: max
 
 on:
   pull_request_target:
@@ -43,6 +44,7 @@ jobs:
         shell: bash
 
       - name: Generate Changelog
+        id: gen_changelog
         run: |
           cd "Tools/changelog"
           node changelog.js
@@ -55,4 +57,11 @@ jobs:
           git commit -m "${{ vars.CHANGELOG_MESSAGE }} (#${{ env.PR_NUMBER }})"
           git push
         shell: bash
+        continue-on-error: true
+    
+      - name: Publish changelog
+        run: Tools/actions_changelog_publish_discord.py
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK }}
+          DISCORD_CHANGELOG: ${{ steps.gen_changelog.outputs.changelog }}
         continue-on-error: true

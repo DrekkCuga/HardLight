@@ -26,6 +26,7 @@ using Content.Shared.Examine;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
@@ -63,6 +64,9 @@ public sealed class SharedMultishotSystem : EntitySystem
 
         if (user == null ||
             !_combatSystem.IsInCombatMode(user))
+            return;
+
+        if (HasComp<BorgChassisComponent>(user)) // Hardlight - Borg modules and multishot don't mix nicely.
             return;
 
         var gunsEnumerator = GetMultishotGuns(user.Value);
@@ -143,6 +147,10 @@ public sealed class SharedMultishotSystem : EntitySystem
 
     private void OnEquipWeapon(Entity<MultishotComponent> multishotWeapon, ref GotEquippedHandEvent args)
     {
+        // Hardlight - Borg modules and multishot don't mix nicely.
+        if (HasComp<BorgChassisComponent>(args.User))
+            return;
+
         var gunsEnumerator = GetMultishotGuns(args.User);
 
         if (gunsEnumerator.Count < 2)
@@ -158,6 +166,10 @@ public sealed class SharedMultishotSystem : EntitySystem
 
     private void OnUnequipWeapon(Entity<MultishotComponent> multishotWeapon, ref GotUnequippedHandEvent args)
     {
+        // Hardlight - Borg modules and multishot don't mix nicely.
+        if (HasComp<BorgChassisComponent>(args.User))
+            return;
+
         var gunsEnumerator = GetMultishotGuns(args.User);
 
         multishotWeapon.Comp.MultishotAffected = false;
