@@ -110,3 +110,32 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/_Starlight/Voice/Resomi/resomi_squawk_1.ogg
+
+- type: entity
+  parent: BasePlushie
+  id: PlushieEinalia
+  name: Einalia Plushie
+  description: A marketable plushie of the Colonial Logistics Division's most annoying officer. It appears to have a perpetual scowl on it's face. Toy "Cycler" shotgun not included.
+  components:
+  - type: Sprite
+    sprite: _HL/Objects/Fun/patreon_plushies.rsi
+    state: EinaliaPlush
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/_Starlight/Voice/Resomi/resomi_squawk_1.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Starlight/Voice/Avali/avali_2.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/_Starlight/Voice/Resomi/resomi_squawk_1.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_Starlight/Voice/Resomi/resomi_squawk_1.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/_Starlight/Voice/Resomi/resomi_cry_2.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/_Starlight/Voice/Avali/avali_cry.ogg
