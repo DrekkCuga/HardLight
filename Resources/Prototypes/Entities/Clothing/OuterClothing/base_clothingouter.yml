@@ -44,6 +44,7 @@
         type: StorageBoundUserInterface
   - type: StaticPrice
     price: 35 # Frontier 70<35
+  - type: Appearance
 
 - type: entity
   abstract: true
