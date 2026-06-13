@@ -38,8 +38,8 @@ public sealed class StartEndGameRulesTest
             }
         });
 
-        // Wait three ticks for any random update loops that might happen
-        await server.WaitRunTicks(3);
+        // Wait 150 ticks for any random update loops that might happen
+        await server.WaitRunTicks(150); // HL: Up from 3 ticks to 150 because we have a lot more stuff going on at round start
 
         await server.WaitAssertion(() =>
         {
