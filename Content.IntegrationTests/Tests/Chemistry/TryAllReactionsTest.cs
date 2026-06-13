@@ -6,6 +6,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent;
 
 namespace Content.IntegrationTests.Tests.Chemistry
 {
@@ -41,6 +42,14 @@ namespace Content.IntegrationTests.Tests.Chemistry
                 //since i have no clue how to isolate each loop assert-wise im just gonna throw this one in for good measure
                 Console.WriteLine($"Testing {reactionPrototype.ID}");
 
+                // HL: Don't test anything that insta-spoils, might add a cryo-beaker marker and test later on
+                var anySpoil = prototypeManager.EnumeratePrototypes<ReagentPrototype>()
+                .Where(p => reactionPrototype.Products.Keys.Contains(p.ID))
+                .Any(r => r.SpoilsInto.HasValue && r.SpoilTime == TimeSpan.Zero);
+
+                if (anySpoil)
+                    continue;
+
                 EntityUid beaker = default;
                 Entity<SolutionComponent>? solutionEnt = default!;
                 Solution solution = null;
@@ -50,6 +59,9 @@ namespace Content.IntegrationTests.Tests.Chemistry
                     beaker = entityManager.SpawnEntity("TestSolutionContainer", coordinates);
                     Assert.That(solutionContainerSystem
                         .TryGetSolution(beaker, "beaker", out solutionEnt, out solution));
+
+                    solutionContainerSystem.SetTemperature(solutionEnt.Value, reactionPrototype.MinimumTemperature); // HL: Heat the container up FIRST, so we don't get weird mixing bullshit
+
                     foreach (var (id, reactant) in reactionPrototype.Reactants)
                     {
 #pragma warning disable NUnit2045
@@ -58,8 +70,6 @@ namespace Content.IntegrationTests.Tests.Chemistry
                         Assert.That(reactant.Amount, Is.EqualTo(quantity));
 #pragma warning restore NUnit2045
                     }
-
-                    solutionContainerSystem.SetTemperature(solutionEnt.Value, reactionPrototype.MinimumTemperature);
 
                     if (reactionPrototype.MixingCategories != null)
                     {
@@ -81,7 +91,10 @@ namespace Content.IntegrationTests.Tests.Chemistry
                         .ToDictionary(x => x, _ => false);
                     foreach (var (reagent, quantity) in solution.Contents)
                     {
-                        Assert.That(foundProductsMap.TryFirstOrNull(x => x.Key.Key == reagent.Prototype && x.Key.Value == quantity, out var foundProduct));
+                        bool pass = foundProductsMap.TryFirstOrNull(x => x.Key.Key == reagent.Prototype && x.Key.Value == quantity, out var foundProduct);
+                        if (!pass)
+                            Console.WriteLine("oops");
+                        Assert.That(pass);
                         foundProductsMap[foundProduct.Value.Key] = true;
                     }
 

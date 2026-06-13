@@ -323,12 +323,20 @@ namespace Content.IntegrationTests.Tests
                 DeserializationOptions.Default,
                 renamedPrototypes,
                 deletedPrototypes);
-
-            if (!reader.TryProcessData())
+            try
             {
-                Assert.Fail($"Failed to process {map}");
+                if (!reader.TryProcessData())
+                {
+                    Assert.Fail($"Failed to process {map}");
+                    return false;
+                }
+            }
+            catch (Exception ex) // HL: Soft-fail on an exception rather than just death
+            {
+                Assert.Fail($"Failed to process {map}, {ex.ToString()}");
                 return false;
             }
+
 
             foreach (var mapId in reader.MapYamlIds)
             {
