@@ -338,6 +338,7 @@ namespace Content.IntegrationTests.Tests
                 return false;
             }
 
+
             foreach (var mapId in reader.MapYamlIds)
             {
                 var mapData = reader.YamlEntities[mapId];

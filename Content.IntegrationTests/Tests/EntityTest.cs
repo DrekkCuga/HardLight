@@ -113,7 +113,7 @@ namespace Content.IntegrationTests.Tests
                     entityMan.SpawnEntity(protoId, map.GridCoords);
                 }
             });
-            await server.WaitRunTicks(15);
+            await server.WaitRunTicks(450); // HL: We have a lot of stuff going on, so wait a few more seconds
             await server.WaitPost(() =>
             {
                 static IEnumerable<(EntityUid, TComp)> Query<TComp>(IEntityManager entityMan)
