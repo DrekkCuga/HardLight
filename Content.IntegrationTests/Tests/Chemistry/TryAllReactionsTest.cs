@@ -7,6 +7,7 @@ using Robust.Shared.Utility;
 using System.Linq;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using System.Collections.Generic;
 
 namespace Content.IntegrationTests.Tests.Chemistry
 {
@@ -14,6 +15,7 @@ namespace Content.IntegrationTests.Tests.Chemistry
     [TestOf(typeof(ReactionPrototype))]
     public sealed class TryAllReactionsTest
     {
+        public static List<string> Whitelist = new List<string> { "InertNanites", "Nanites" }; // HL: Add whitelist because some reactions need a cryo beaker and we don't check for that yet...
         [TestPrototypes]
         private const string Prototypes = @"
 - type: entity
@@ -48,6 +50,9 @@ namespace Content.IntegrationTests.Tests.Chemistry
                 .Any(r => r.SpoilsInto.HasValue && r.SpoilTime == TimeSpan.Zero);
 
                 if (anySpoil)
+                    continue;
+
+                if (Whitelist.Contains(reactionPrototype.ID))
                     continue;
 
                 EntityUid beaker = default;
@@ -94,7 +99,7 @@ namespace Content.IntegrationTests.Tests.Chemistry
                         bool pass = foundProductsMap.TryFirstOrNull(x => x.Key.Key == reagent.Prototype && x.Key.Value == quantity, out var foundProduct);
                         if (!pass)
                             Console.WriteLine("oops");
-                        Assert.That(pass);
+                        Assert.That(pass, $"Failed to create solution: {reactionPrototype.ID} - Expected {foundProductsMap.First().Key.Key}, got {reagent.Prototype}");
                         foundProductsMap[foundProduct.Value.Key] = true;
                     }
 
