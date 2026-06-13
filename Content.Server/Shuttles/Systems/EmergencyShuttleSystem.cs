@@ -662,6 +662,13 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
             return;
         }
 
+        // Don't spawn the map if we've disabled it
+        if (!_configManager.GetCVar(HLCCVars.AutoSpawnColComm))
+        {
+            Log.Warning("ColComm auto-spawning disabled, but it was requested.");
+            return;
+        }
+
         var map = _mapSystem.CreateMap(out var mapId);
         if (!_loader.TryLoadGrid(mapId, component.Map, out var grid))
         {
