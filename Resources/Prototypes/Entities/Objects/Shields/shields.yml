@@ -431,8 +431,8 @@
             - !type:SpawnEntitiesBehavior
               spawn:
                 SheetGlass:
-                  min: 5
-                  max: 5
+                  min: 3
+                  max: 3 # HL: Decreased from 5/5 to 3/3 to match potential price of dropped items
 
 - type: entity
   name: energy shield
