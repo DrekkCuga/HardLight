@@ -18,7 +18,8 @@ public sealed class StartEndGameRulesTest
         await using var pair = await PoolManager.GetServerClient(new PoolSettings
         {
             Dirty = true,
-            DummyTicker = false
+            DummyTicker = false,
+            Fresh = true
         });
         var server = pair.Server;
         await server.WaitIdleAsync();
@@ -38,8 +39,8 @@ public sealed class StartEndGameRulesTest
             }
         });
 
-        // Wait 150 ticks for any random update loops that might happen
-        await server.WaitRunTicks(150); // HL: Up from 3 ticks to 150 because we have a lot more stuff going on at round start
+        // Wait 3 ticks for any random updates that might happen, not too long because we have a bunch of weird shit on timers we can't turn off (yet)
+        await server.WaitRunTicks(3);
 
         await server.WaitAssertion(() =>
         {
