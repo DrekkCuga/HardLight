@@ -47,7 +47,8 @@ public sealed class GhostRoleTests
         {
             Dirty = true,
             DummyTicker = false,
-            Connected = true
+            Connected = true,
+            Map = "Empty"
         });
         var server = pair.Server;
         var client = pair.Client;
@@ -89,13 +90,15 @@ public sealed class GhostRoleTests
         // Use the ghost command
         conHost.ExecuteCommand(ghostCommand);
         await pair.RunTicksSync(10);
+        conHost.ExecuteCommand("observe"); // HL: You get kicked back to the lobby when /ghosting
+        await pair.RunTicksSync(10);
         var ghostOne = session.AttachedEntity;
         Assert.Multiple(() =>
         {
             // Assert that the ghost is a new entity with a new mind
             Assert.That(entMan.HasComponent<GhostComponent>(ghostOne));
             Assert.That(ghostOne, Is.Not.EqualTo(originalPlayerMob));
-            Assert.That(session.ContentData()?.Mind, Is.EqualTo(originalPlayerMindId));
+            //Assert.That(session.ContentData()?.Mind, Is.EqualTo(originalPlayerMindId)); HL: Not needed because we create a new entity when kicked to the lobby
             if (adminGhost)
             {
                 // aghost, so the player mob should still own the mind, but the mind is visiting the ghost.
@@ -106,7 +109,7 @@ public sealed class GhostRoleTests
             else
             {
                 // player ghost, can't return. The mind is owned by the ghost, and is not visiting.
-                Assert.That(originalPlayerMind.OwnedEntity, Is.EqualTo(ghostOne));
+                //Assert.That(originalPlayerMind.OwnedEntity, Is.EqualTo(ghostOne)); HL: Owned entity is destroyed when we're kicked to the lobby
                 Assert.That(originalPlayerMind.VisitingEntity, Is.Null);
             }
 
@@ -173,6 +176,8 @@ public sealed class GhostRoleTests
         // Ghost again.
         conHost.ExecuteCommand(ghostCommand);
         await pair.RunTicksSync(10);
+        conHost.ExecuteCommand("observe"); // HL: You get kicked back to the lobby when /ghosting
+        await pair.RunTicksSync(10);
         var ghostTwo = session.AttachedEntity;
         Assert.Multiple(() =>
         {
@@ -180,7 +185,7 @@ public sealed class GhostRoleTests
             Assert.That(entMan.HasComponent<GhostComponent>(ghostTwo));
             Assert.That(ghostTwo, Is.Not.EqualTo(originalPlayerMob));
             Assert.That(ghostTwo, Is.Not.EqualTo(ghostRole));
-            Assert.That(session.ContentData()?.Mind, Is.EqualTo(ghostRoleMindId));
+            //Assert.That(session.ContentData()?.Mind, Is.EqualTo(ghostRoleMindId)); HL: Not needed because we create a new entity when kicked to the lobby
 
             if(adminGhost)
             {
@@ -192,7 +197,7 @@ public sealed class GhostRoleTests
             else
             {
                 // player ghost, can't return. The mind is owned by the ghost, and is not visiting.
-                Assert.That(ghostRoleMind.OwnedEntity, Is.EqualTo(ghostTwo));
+                //Assert.That(ghostRoleMind.OwnedEntity, Is.EqualTo(ghostTwo)); HL: Owned entity is destroyed when we're kicked to the lobby
                 Assert.That(ghostRoleMind.VisitingEntity, Is.Null);
             }
 

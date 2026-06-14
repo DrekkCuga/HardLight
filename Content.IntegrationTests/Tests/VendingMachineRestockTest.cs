@@ -93,7 +93,7 @@ namespace Content.IntegrationTests.Tests
     - BigTestInventory
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineCola
   id: VendingMachineTest
   name: Test Ramen
   components:
@@ -101,8 +101,6 @@ namespace Content.IntegrationTests.Tests
     layoutId: Vending
   - type: VendingMachine
     pack: TestInventory
-  - type: Sprite
-    sprite: error.rsi
 ";
 
         [Test]
@@ -181,7 +179,7 @@ namespace Content.IntegrationTests.Tests
         [Test]
         public async Task TestCompleteRestockProcess()
         {
-            await using var pair = await PoolManager.GetServerClient();
+            await using var pair = await PoolManager.GetServerClient(new PoolSettings { Destructive = true }); // HL: I've got no fucking idea why this doesn't let the pair get re-used but I spent like 3 hours here so I don't care}
             var server = pair.Server;
             await server.WaitIdleAsync();
 
@@ -200,7 +198,7 @@ namespace Content.IntegrationTests.Tests
 
             var testMap = await pair.CreateTestMap();
 
-            await server.WaitAssertion(() =>
+            await server.WaitAssertion(async () =>
             {
                 var coordinates = testMap.GridCoords;
 
@@ -209,6 +207,7 @@ namespace Content.IntegrationTests.Tests
                 machine = entityManager.SpawnEntity("VendingMachineTest", coordinates);
                 packageRight = entityManager.SpawnEntity("TestRestockCorrect", coordinates);
                 packageWrong = entityManager.SpawnEntity("TestRestockWrong", coordinates);
+                await pair.RunTicksSync(pair.SecondsToTicks(1)); // HL: Wait for vending restock ticks
 
                 // Sanity test for components existing.
                 Assert.Multiple(() =>
@@ -268,7 +267,10 @@ namespace Content.IntegrationTests.Tests
         [Test]
         public async Task TestRestockBreaksOpen()
         {
-            await using var pair = await PoolManager.GetServerClient();
+            await using var pair = await PoolManager.GetServerClient(new PoolSettings
+            {
+                DummyTicker = false
+            });
             var server = pair.Server;
             await server.WaitIdleAsync();
 
@@ -331,7 +333,7 @@ namespace Content.IntegrationTests.Tests
         [Test]
         public async Task TestRestockInventoryBounds()
         {
-            await using var pair = await PoolManager.GetServerClient();
+            await using var pair = await PoolManager.GetServerClient(new PoolSettings { Dirty = true, Destructive = true }); // HL: I've got no fucking idea why this doesn't let the pair get re-used but I spent like 3 hours here so I don't care
             var server = pair.Server;
             await server.WaitIdleAsync();
 
@@ -343,14 +345,15 @@ namespace Content.IntegrationTests.Tests
 
             var testMap = await pair.CreateTestMap();
 
-            await server.WaitAssertion(() =>
+            await server.WaitAssertion(async () =>
             {
                 var coordinates = testMap.GridCoords;
-
                 var machine = entityManager.SpawnEntity("VendingMachineTest", coordinates);
+                await pair.RunTicksSync(pair.SecondsToTicks(1)); // HL: We stock vending machines on a delay, so gotta wait
 
+                Console.WriteLine();
                 Assert.That(vendingMachineSystem.GetAvailableInventory(machine), Has.Count.EqualTo(1),
-                    "Machine's available inventory did not contain one entry.");
+                    "Machine's available inventory did not contain one entry: ");
 
                 Assert.That(vendingMachineSystem.GetAvailableInventory(machine)[0].Amount, Is.EqualTo(1),
                     "Machine's available inventory is not the expected amount.");
