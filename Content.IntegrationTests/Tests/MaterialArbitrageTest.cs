@@ -241,7 +241,7 @@ public sealed class MaterialArbitrageTest
 
                         foreach (var (matId, amount) in composition)
                         {
-                            spawnedMats[matId] = (value.Max + value.Min) / 2 * amount + spawnedMats.GetValueOrDefault(matId); // HL: Take into account the chance of getting the resource
+                            spawnedMats[matId] = (int)((value.Max + value.Min) / 2f * amount + spawnedMats.GetValueOrDefault(matId)); // HL: Take into account the chance of getting the resource
                         }
                     }
                 }
