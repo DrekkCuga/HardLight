@@ -460,7 +460,11 @@ public sealed class StationJobsTest
     [Test]
     public async Task ShipCrewHiringEligibilityTest()
     {
-        await using var pair = await PoolManager.GetServerClient();
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings
+        {
+            Fresh = true,
+            Destructive = true
+        });
         var server = pair.Server;
 
         var prototypeManager = server.ResolveDependency<IPrototypeManager>();
@@ -832,7 +836,11 @@ public sealed class StationJobsTest
     [Test] // HardLight
     public async Task RoundRestartStationDeletionDoesNotOpenTrackedJobsTest()
     {
-        await using var pair = await PoolManager.GetServerClient();
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings
+        {
+            Fresh = true,
+            Destructive = true
+        });
         var server = pair.Server;
 
         var prototypeManager = server.ResolveDependency<IPrototypeManager>();

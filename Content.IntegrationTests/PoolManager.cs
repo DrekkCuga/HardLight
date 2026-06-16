@@ -1,8 +1,11 @@
 #nullable enable
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json;
 using Content.IntegrationTests.Pair;
 using Content.Shared.CCVar;
+using NUnit.Framework.Internal;
 using Robust.UnitTesting;
 
 namespace Content.IntegrationTests;
@@ -12,6 +15,7 @@ public static partial class PoolManager
 {
     public static readonly ContentPoolManager Instance = new();
     public const string TestMap = "Empty";
+    public static Dictionary<int, DateTime> pairTimers = new Dictionary<int, DateTime>();
 
     /// <summary>
     /// Runs a server, or a client until a condition is true

@@ -76,7 +76,8 @@ public sealed class JobTest
             DummyTicker = false,
             Connected = true,
             InLobby = true,
-            Dirty = true // HL: Tests that edit the round state break stuff on future tests
+            Fresh = true, // HL: Tests that edit the round state break stuff on future tests
+            Destructive = true
         });
 
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, _map);
@@ -111,7 +112,8 @@ public sealed class JobTest
             DummyTicker = false,
             Connected = true,
             InLobby = true,
-            Dirty = true // HL: Tests that edit the round state break stuff on future tests
+            Fresh = true,
+            Destructive = true
         });
 
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, _map);
@@ -151,7 +153,8 @@ public sealed class JobTest
             DummyTicker = false,
             Connected = true,
             InLobby = true,
-            Dirty = true
+            Fresh = true,
+            Destructive = true
         });
 
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, _map);
@@ -187,7 +190,8 @@ public sealed class JobTest
             DummyTicker = false,
             Connected = true,
             InLobby = true,
-            Dirty = true
+            Fresh = true,
+            Destructive = true
         });
 
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, _map);

@@ -41,6 +41,12 @@ public static partial class PoolManager
         (CCVars.AutoVoteEnabled.Name,         "false"), // HL: Stop auto-vote from starting a round mid-test
         (HLCCVars.RoundPersistenceEnabled.Name,      "false"), // HL: Stop things persisting between rounds for testing
         (CCVars.EventsEnabled.Name, "false"), // HL: We don't want random events messing with tests
-        (HLCCVars.AutoSpawnColComm.Name, "false") // HL: colcomm spawning fucks all the tests that look at ent counts and I spent way too long figuring out how to turn it off
+        (HLCCVars.AutoSpawnColComm.Name, "false"), // HL: colcomm spawning fucks all the tests that look at ent counts and I spent way too long figuring out how to turn it off
+        (CCVars.VoteTimerRestart.Name, "120"),
+        (CCVars.VoteTimerPreset.Name, "120"),
+        (CCVars.VoteTimerMap.Name, "120"),
+        //(CCVars.VoteEnabled.Name, "false"),
+        (CCVars.VoteTimerAlone.Name, "120"),
+        (CCVars.RoundRestartTime.Name, "1200")
     };
 }

@@ -48,7 +48,9 @@ public sealed class GhostRoleTests
             Dirty = true,
             DummyTicker = false,
             Connected = true,
-            Map = "Empty"
+            Map = "Empty",
+            Fresh = true,
+            Destructive = true // HL: Round states mess with the test pair
         });
         var server = pair.Server;
         var client = pair.Client;
@@ -90,8 +92,11 @@ public sealed class GhostRoleTests
         // Use the ghost command
         conHost.ExecuteCommand(ghostCommand);
         await pair.RunTicksSync(10);
-        conHost.ExecuteCommand("observe"); // HL: You get kicked back to the lobby when /ghosting
-        await pair.RunTicksSync(10);
+        if (!adminGhost)
+        {
+            conHost.ExecuteCommand("observe"); // HL: You get kicked back to the lobby when /ghosting
+            await pair.RunTicksSync(10);
+        }
         var ghostOne = session.AttachedEntity;
         Assert.Multiple(() =>
         {
@@ -176,8 +181,12 @@ public sealed class GhostRoleTests
         // Ghost again.
         conHost.ExecuteCommand(ghostCommand);
         await pair.RunTicksSync(10);
-        conHost.ExecuteCommand("observe"); // HL: You get kicked back to the lobby when /ghosting
-        await pair.RunTicksSync(10);
+        if (!adminGhost)
+        {
+            conHost.ExecuteCommand("observe"); // HL: You get kicked back to the lobby when /ghosting
+            await pair.RunTicksSync(10);
+        }
+
         var ghostTwo = session.AttachedEntity;
         Assert.Multiple(() =>
         {
@@ -187,7 +196,7 @@ public sealed class GhostRoleTests
             Assert.That(ghostTwo, Is.Not.EqualTo(ghostRole));
             //Assert.That(session.ContentData()?.Mind, Is.EqualTo(ghostRoleMindId)); HL: Not needed because we create a new entity when kicked to the lobby
 
-            if(adminGhost)
+            if (adminGhost)
             {
                 // aghost case, the ghost role mind should be owned by the ghost role entity,
                 // the ghost role mind is visiting the new ghost
