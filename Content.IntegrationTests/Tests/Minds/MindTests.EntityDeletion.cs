@@ -73,6 +73,7 @@ public sealed partial class MindTests
 
     // this is a variant of TestGhostOnDelete that just deletes the whole map.
     [Test]
+    [Ignore("HL: We have persistant rounds and ghosts don't get force-respawned so this doesn't need to run")]
     public async Task TestGhostOnDeleteMap()
     {
         await using var pair = await SetupPair(dirty: true);
