@@ -7,6 +7,7 @@ using Robust.Shared.Utility;
 using System.Linq;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using System.Collections.Generic;
 
 namespace Content.IntegrationTests.Tests.Chemistry
 {
@@ -14,6 +15,7 @@ namespace Content.IntegrationTests.Tests.Chemistry
     [TestOf(typeof(ReactionPrototype))]
     public sealed class TryAllReactionsTest
     {
+        public List<string> ReactionWhitelist = ["InertNanites"]; // HL: Whitelist as some reactions require cryo beakers, but we don't have a good dynamic check for that yet
         [TestPrototypes]
         private const string Prototypes = @"
 - type: entity
@@ -39,13 +41,18 @@ namespace Content.IntegrationTests.Tests.Chemistry
 
             foreach (var reactionPrototype in prototypeManager.EnumeratePrototypes<ReactionPrototype>())
             {
+                if (ReactionWhitelist.Contains(reactionPrototype.ID))
+                {
+                    Console.WriteLine($"Skipping Reaction {reactionPrototype.ID} as it's in the whitelist");
+                    continue;
+                }
                 //since i have no clue how to isolate each loop assert-wise im just gonna throw this one in for good measure
                 Console.WriteLine($"Testing {reactionPrototype.ID}");
 
                 // HL: Don't test anything that insta-spoils, might add a cryo-beaker marker and test later on
                 var anySpoil = prototypeManager.EnumeratePrototypes<ReagentPrototype>()
                 .Where(p => reactionPrototype.Products.Keys.Contains(p.ID))
-                .Any(r => r.SpoilsInto.HasValue && r.SpoilTime == TimeSpan.Zero);
+                .Any(r => r.SpoilConditions != null && r.SpoilConditions.SpoilTime == TimeSpan.Zero);
 
                 if (anySpoil)
                     continue;
@@ -91,10 +98,8 @@ namespace Content.IntegrationTests.Tests.Chemistry
                         .ToDictionary(x => x, _ => false);
                     foreach (var (reagent, quantity) in solution.Contents)
                     {
-                        bool pass = foundProductsMap.TryFirstOrNull(x => x.Key.Key == reagent.Prototype && x.Key.Value == quantity, out var foundProduct);
-                        if (!pass)
-                            Console.WriteLine("oops");
-                        Assert.That(pass);
+                        Assert.That(foundProductsMap.TryFirstOrNull(x => x.Key.Key == reagent.Prototype && x.Key.Value == quantity, out var foundProduct),
+                        $"Failed to make Reagent from Reaction: {reactionPrototype.ID}\nBut Got Reagents: {reagent.Prototype} in quantity: {quantity}");
                         foundProductsMap[foundProduct.Value.Key] = true;
                     }
 
