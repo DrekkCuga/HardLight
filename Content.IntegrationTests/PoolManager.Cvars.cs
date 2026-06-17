@@ -1,5 +1,6 @@
 #nullable enable
 using Content.Shared.CCVar;
+using Content.Shared.HL.CCVar;
 using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.UnitTesting;
@@ -42,7 +43,16 @@ public static partial class PoolManager
         (CCVars.MovementMobPushing.Name, "false"),
         (CCVars.GameLobbyDefaultPreset.Name, "nftest"), // Frontier: Adventure takes ages, default to nftest (no need to test events we will not run, e.g. meteor swarm)
         (CCVars.StaticStorageUI.Name, "true"), // Frontier: causes storage test failures
-        (CCVars.StorageLimit.Name, "1")// Frontier: test failures with multiple storage enabled
+        (CCVars.StorageLimit.Name, "1"),// Frontier: test failures with multiple storage enabled
+        (CCVars.AutoVoteEnabled.Name,         "false"), // HL: Stop auto-vote from starting a round mid-test
+        (HLCCVars.RoundPersistenceEnabled.Name,      "false"), // HL: Stop things persisting between rounds for testing
+        (CCVars.EventsEnabled.Name, "false"), // HL: We don't want random events messing with tests
+        (HLCCVars.AutoSpawnColComm.Name, "false"), // HL: colcomm spawning fucks all the tests that look at ent counts and I spent way too long figuring out how to turn it off
+        (CCVars.VoteTimerRestart.Name, "120"),
+        (CCVars.VoteTimerPreset.Name, "120"),
+        (CCVars.VoteTimerMap.Name, "120"),
+        (CCVars.VoteTimerAlone.Name, "120"),
+        (CCVars.RoundRestartTime.Name, "1200")
     };
 
     public static async Task SetupCVars(RobustIntegrationTest.IntegrationInstance instance, PoolSettings settings)
