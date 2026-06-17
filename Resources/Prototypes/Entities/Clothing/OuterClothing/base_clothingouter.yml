@@ -6,10 +6,11 @@
   - type: Clothing
     slots:
     - outerClothing
-  - type: StaticPrice # HL: Moving this up one because git wizardry
-    price: 45 # HL: Price balancing
   - type: Sprite
     state: icon
+  - type: StaticPrice # Frontier: setting base price to make material arbitrage happier
+    price: 45 # HL: Price balancing
+  - type: Appearance
 
 - type: entity
   abstract: true
