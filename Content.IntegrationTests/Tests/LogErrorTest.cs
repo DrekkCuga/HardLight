@@ -1,3 +1,4 @@
+using System.Linq;
 using Robust.Shared.Configuration;
 using Robust.Shared.Log;
 using Robust.UnitTesting;
