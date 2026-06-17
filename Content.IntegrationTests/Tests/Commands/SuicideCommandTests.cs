@@ -65,7 +65,9 @@ public sealed class SuicideCommandTests
         {
             Connected = true,
             Dirty = true,
-            DummyTicker = false
+            DummyTicker = false,
+            Fresh = true, // HL: Tests that edit the round state break stuff on future tests
+            Destructive = true
         });
         var server = pair.Server;
         var consoleHost = server.ResolveDependency<IConsoleHost>();
@@ -116,7 +118,9 @@ public sealed class SuicideCommandTests
         {
             Connected = true,
             Dirty = true,
-            DummyTicker = false
+            DummyTicker = false,
+            Fresh = true,
+            Destructive = true
         });
         var server = pair.Server;
         var consoleHost = server.ResolveDependency<IConsoleHost>();
@@ -180,7 +184,9 @@ public sealed class SuicideCommandTests
         {
             Connected = true,
             Dirty = true,
-            DummyTicker = false
+            DummyTicker = false,
+            Fresh = true,
+            Destructive = true
         });
         var server = pair.Server;
         var consoleHost = server.ResolveDependency<IConsoleHost>();
@@ -231,7 +237,9 @@ public sealed class SuicideCommandTests
         {
             Connected = true,
             Dirty = true,
-            DummyTicker = false
+            DummyTicker = false,
+            Fresh = true,
+            Destructive = true
         });
         var server = pair.Server;
         var consoleHost = server.ResolveDependency<IConsoleHost>();
@@ -306,7 +314,9 @@ public sealed class SuicideCommandTests
         {
             Connected = true,
             Dirty = true,
-            DummyTicker = false
+            DummyTicker = false,
+            Fresh = true,
+            Destructive = true
         });
 
         try
