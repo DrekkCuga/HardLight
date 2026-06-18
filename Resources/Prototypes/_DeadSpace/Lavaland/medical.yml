@@ -31,14 +31,14 @@
   description: Содержит ророриум и ещё какуе-то хрень.
   components:
   - type: Sprite
-    sprite: _DeadSpace/Necromorfs/medipen.rsi
+    sprite: _NF/Objects/Specific/Medical/medipen.rsi
     layers:
-    - state: OPPY-OPNY-Medipen
+    - state: medipen
       map: ["enum.SolutionContainerLayers.Fill"]
   - type: SolutionContainerVisuals
     maxFillLevels: 1
     changeColor: false
-    emptySpriteName: OPPY-OPNY-Medipen-Empty
+    emptySpriteName: medipen_empty
   - type: Injector
     solutionName: pen
     currentTransferAmount: null
