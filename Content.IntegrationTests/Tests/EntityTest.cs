@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using Content.Shared.CCVar;
 using Robust.Shared;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Configuration;
@@ -18,6 +19,25 @@ namespace Content.IntegrationTests.Tests
     [TestOf(typeof(EntityUid))]
     public sealed class EntityTest
     {
+
+        [TestPrototypes]
+        private const string Prototypes = @"
+- type: gamePreset
+  id: TestPresetEnt
+  name: Test Preset
+  description: """"
+  showInVote: false
+  rules:
+  - TestRuleEnt
+- type: entity
+  id: TestRuleEnt
+  parent: BaseGameRule
+  categories: [ GameRules ]
+  components:
+  - type: GameRule
+    minPlayers: 0
+  - type: TestRule
+";
         private static readonly HashSet<ProtoId<EntityCategoryPrototype>> IgnoredCategories = ["Spawner", "Debug"]; // HL: Turn into a HashSet so we can ignore multiple categories
 
         [Test]
@@ -89,9 +109,12 @@ namespace Content.IntegrationTests.Tests
         {
             // This test dirties the pair as it simply deletes ALL entities when done. Overhead of restarting the round
             // is minimal relative to the rest of the test.
-            var settings = new PoolSettings { Dirty = true };
+            var settings = new PoolSettings { Dirty = true, Connected = false, DummyTicker = true, Fresh = true };
             await using var pair = await PoolManager.GetServerClient(settings);
             var server = pair.Server;
+            server.CfgMan.SetCVar(CCVars.GameLobbyFallbackEnabled, false);
+            server.CfgMan.SetCVar(CCVars.GameLobbyDefaultPreset, "TestPresetEnt");
+            await pair.WaitCommand("setgamepreset TestPresetEnt 9999");
             var map = await pair.CreateTestMap();
 
             var entityMan = server.ResolveDependency<IEntityManager>();
@@ -113,7 +136,7 @@ namespace Content.IntegrationTests.Tests
                     entityMan.SpawnEntity(protoId, map.GridCoords);
                 }
             });
-            await server.WaitRunTicks(450); // HL: We have a lot of stuff going on, so wait a few more seconds
+            await server.WaitRunTicks(15); // HL: We have a lot of stuff going on, so wait a few more seconds
             await server.WaitPost(() =>
             {
                 static IEnumerable<(EntityUid, TComp)> Query<TComp>(IEntityManager entityMan)
