@@ -142,3 +142,6 @@ trait-ultravision-nobypass-desc = Through a random mutation, you perceive the wo
 
 trait-deuteranopia-nobypass-name = Deuteranopia (Untoggleable)
 trait-deuteranopia-nobypass-desc = Through a random mutation, you have red-green colour blindness. (Note this cannot be disable with the accessibility toggle)
+
+trait-test-bionic-spinarette-name = Test Bionic Spinarette
+trait-test-bionic-spinarette-desc = Speeeeeeen
