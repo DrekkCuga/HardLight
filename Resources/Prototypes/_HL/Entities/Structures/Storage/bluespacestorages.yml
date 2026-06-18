@@ -158,6 +158,8 @@
     anchoring: true
   - type: StaticPrice
     price: 120000
+  - type: Physics
+    bodyType: Static
 
 - type: entity
   id: BluespaceTabletop
