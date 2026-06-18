@@ -48,7 +48,7 @@ public abstract partial class InteractionTest
     protected virtual string PlayerPrototype => "InteractionTestMob";
 
     protected TestPair Pair = default!;
-    protected TestMapData MapData => default!;
+    protected TestMapData MapData = default!;
 
     protected RobustIntegrationTest.ServerIntegrationInstance Server => Pair.Server;
     protected RobustIntegrationTest.ClientIntegrationInstance Client => Pair.Client;
@@ -193,7 +193,7 @@ public abstract partial class InteractionTest
         CUiSys = Client.System<SharedUserInterfaceSystem>();
 
         // Setup map.
-        await Pair.CreateTestMap();
+        MapData = await Pair.CreateTestMap();
 
         PlayerCoords = SEntMan.GetNetCoordinates(Transform.WithEntityId(MapData.GridCoords.Offset(new Vector2(0.5f, 0.5f)), MapData.MapUid));
         TargetCoords = SEntMan.GetNetCoordinates(Transform.WithEntityId(MapData.GridCoords.Offset(new Vector2(1.5f, 0.5f)), MapData.MapUid));
