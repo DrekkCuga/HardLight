@@ -4842,3 +4842,73 @@ Entries:
       message: 'Added the spark of hatred to AI '
   id: 518
   time: '2026-06-16T02:06:42.0000000+00:00'
+- author: Iisazel
+  changes:
+    - type: Add
+      message: Added alot more ship storage options
+  id: 519
+  time: '2026-06-18T06:37:05.0000000+00:00'
+- author: fenndragon
+  changes:
+    - type: Add
+      message: Added folding bags with rollers
+    - type: Remove
+      message: Reduced the bluespace stash max size capacity from Ginormous to Huge
+  id: 520
+  time: '2026-06-18T09:51:38.0000000+00:00'
+- author: Shades
+  changes:
+    - type: Fix
+      message: Light Sensitivity Trait having a error icon.
+    - type: Fix
+      message: TheDark deleted itself on server cleanup.
+    - type: Fix
+      message: Fixed Phase Effect Sprite Size not getting affected.
+    - type: Fix
+      message: NullSpace Locator not working.
+    - type: Fix
+      message: NullSpacePuller not stopping the pulling action correctly.
+  id: 521
+  time: '2026-06-18T10:54:54.0000000+00:00'
+- author: ScolarVisari
+  changes:
+    - type: Add
+      message: Added Tradeband language
+  id: 522
+  time: '2026-06-18T10:55:22.0000000+00:00'
+- author: Iisazel
+  changes:
+    - type: Add
+      message: >-
+        Figurines (And sex toys) now save when left on the floor! Please dont
+        explode the server with this power
+  id: 523
+  time: '2026-06-18T10:57:25.0000000+00:00'
+- author: Notarin
+  changes:
+    - type: Add
+      message: Added the addressed telepathy psionic power.
+    - type: Tweak
+      message: Gave the mantis the addressed telepathy psionic power
+  id: 524
+  time: '2026-06-18T10:57:46.0000000+00:00'
+- author: Slatebreaker
+  changes:
+    - type: Tweak
+      message: >-
+        Document cases can now hold clipboards and casettes, and show their 100%
+        explosion resistance
+  id: 525
+  time: '2026-06-18T10:59:39.0000000+00:00'
+- author: '-'
+  changes: []
+  id: 526
+  time: '2026-06-18T11:02:09.0000000+00:00'
+- author: fenndragon
+  changes:
+    - type: Tweak
+      message: 'changed syndicate weapon values '
+    - type: Tweak
+      message: syndicate equipment no longer saves
+  id: 527
+  time: '2026-06-18T11:27:33.0000000+00:00'
