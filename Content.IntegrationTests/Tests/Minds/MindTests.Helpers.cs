@@ -32,7 +32,9 @@ public sealed partial class MindTests
         {
             DummyTicker = false,
             Connected = true,
-            Dirty = dirty
+            Dirty = dirty,
+            Fresh = true,
+            Destructive = true // HL: Messing with the round state when spawning players can break the pair
         });
 
         var entMan = pair.Server.ResolveDependency<IServerEntityManager>();
