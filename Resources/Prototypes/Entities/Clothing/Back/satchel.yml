@@ -104,7 +104,7 @@
   - type: Construction
     deconstructionTarget: null
     graph: bagfolding
-    node: atmosphericbackpacksatchel
+    node: atmosphericsbackpacksatchel
 
 # Folded
 - type: entity
@@ -121,7 +121,7 @@
   - type: Construction
     deconstructionTarget: null
     graph: bagfolding
-    node: atmosphericbackpacksatchelfolded
+    node: atmosphericsbackpacksatchelfolded
 
 - type: entity
   parent: ClothingBackpackSatchel
@@ -595,8 +595,8 @@
   - type: Construction
     deconstructionTarget: null
     graph: bagfolding
-    node: holdingbackpacksatchel
-    
+    node: bluespacebackpacksatchel
+
 # Folded
 - type: entity
   parent: [ContentsExplosionResistanceBase, RecyclableItemClothBasic]
@@ -612,5 +612,5 @@
   - type: Construction
     deconstructionTarget: null
     graph: bagfolding
-    node: holdingbackpacksatchelfolded
+    node: bluespacebackpacksatchelfolded
 
