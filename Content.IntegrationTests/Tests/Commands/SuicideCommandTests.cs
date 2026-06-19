@@ -54,6 +54,13 @@ public sealed class SuicideCommandTests
   - type: MaterialReclaimer";
     private static readonly ProtoId<TagPrototype> CannotSuicideTag = "CannotSuicide";
     private static readonly ProtoId<DamageTypePrototype> SlashProtoId = "Slash";
+
+    private static readonly PoolSettings PoolSettings = new PoolSettings // HL: Moved all the tests to use a shared set of pool settings
+    {
+        Connected = true,
+        Dirty = true,
+        DummyTicker = false
+    };
     /// <summary>
     /// Run the suicide command in the console
     /// Should successfully kill the player and ghost them
@@ -61,14 +68,7 @@ public sealed class SuicideCommandTests
     [Test]
     public async Task TestSuicide()
     {
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings
-        {
-            Connected = true,
-            Dirty = true,
-            DummyTicker = false,
-            Fresh = true,
-            Destructive = true // HL: Tests that edit the round state break stuff on future tests
-        });
+        await using var pair = await PoolManager.GetServerClient(PoolSettings);
         var server = pair.Server;
         var consoleHost = server.ResolveDependency<IConsoleHost>();
         var entManager = server.ResolveDependency<IEntityManager>();
@@ -114,14 +114,7 @@ public sealed class SuicideCommandTests
     [Test]
     public async Task TestSuicideWhileDamaged()
     {
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings
-        {
-            Connected = true,
-            Dirty = true,
-            DummyTicker = false,
-            Fresh = true,
-            Destructive = true // HL: Tests that edit the round state break stuff on future tests
-        });
+        await using var pair = await PoolManager.GetServerClient(PoolSettings);
         var server = pair.Server;
         var consoleHost = server.ResolveDependency<IConsoleHost>();
         var entManager = server.ResolveDependency<IEntityManager>();
@@ -180,14 +173,7 @@ public sealed class SuicideCommandTests
     [Test]
     public async Task TestSuicideWhenCannotSuicide()
     {
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings
-        {
-            Connected = true,
-            Dirty = true,
-            DummyTicker = false,
-            Fresh = true,
-            Destructive = true // HL: Tests that edit the round state break stuff on future tests
-        });
+        await using var pair = await PoolManager.GetServerClient(PoolSettings);
         var server = pair.Server;
         var consoleHost = server.ResolveDependency<IConsoleHost>();
         var entManager = server.ResolveDependency<IEntityManager>();
@@ -233,14 +219,7 @@ public sealed class SuicideCommandTests
     [Test]
     public async Task TestSuicideByHeldItem()
     {
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings
-        {
-            Connected = true,
-            Dirty = true,
-            DummyTicker = false,
-            Fresh = true,
-            Destructive = true // HL: Tests that edit the round state break stuff on future tests
-        });
+        await using var pair = await PoolManager.GetServerClient(PoolSettings);
         var server = pair.Server;
         var consoleHost = server.ResolveDependency<IConsoleHost>();
         var entManager = server.ResolveDependency<IEntityManager>();
@@ -310,14 +289,7 @@ public sealed class SuicideCommandTests
     [Test]
     public async Task TestSuicideByHeldItemSpreadDamage()
     {
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings
-        {
-            Connected = true,
-            Dirty = true,
-            DummyTicker = false,
-            Fresh = true,
-            Destructive = true // HL: Tests that edit the round state break stuff on future tests
-        });
+        await using var pair = await PoolManager.GetServerClient(PoolSettings);
 
         try
         {

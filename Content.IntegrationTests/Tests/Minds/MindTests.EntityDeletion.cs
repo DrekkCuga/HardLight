@@ -172,10 +172,12 @@ public sealed partial class MindTests
         var mind = GetMind(pair);
 
         var player = playerMan.Sessions.Single();
-#pragma warning disable NUnit2045 // Interdependent assertions.
-        Assert.That(player.AttachedEntity, Is.Not.Null);
-        Assert.That(entMan.EntityExists(player.AttachedEntity));
-#pragma warning restore NUnit2045
+        Assert.Multiple(() =>
+        {
+            Assert.That(player.AttachedEntity, Is.Not.Null);
+            Assert.That(entMan.EntityExists(player.AttachedEntity));
+        });
+
         var originalEntity = player.AttachedEntity.Value;
 
         EntityUid ghost = default!;

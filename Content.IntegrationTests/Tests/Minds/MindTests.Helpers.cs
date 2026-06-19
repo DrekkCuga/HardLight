@@ -26,15 +26,13 @@ public sealed partial class MindTests
     /// the player's mind's current entity, likely because some previous test directly changed the players attached
     /// entity.
     /// </remarks>
-    private static async Task<Pair.TestPair> SetupPair(bool dirty = false)
+    private static async Task<TestPair> SetupPair(bool dirty = false)
     {
         var pair = await PoolManager.GetServerClient(new PoolSettings
         {
             DummyTicker = false,
             Connected = true,
-            Dirty = dirty,
-            Fresh = true,
-            Destructive = true // HL: Messing with the round state when spawning players can break the pair
+            Dirty = dirty
         });
 
         var entMan = pair.Server.ResolveDependency<IServerEntityManager>();
