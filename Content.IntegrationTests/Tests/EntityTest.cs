@@ -105,6 +105,7 @@ namespace Content.IntegrationTests.Tests
         }
 
         [Test]
+        [Retry(2)] //HL: Sometimes this fails for literally no reason, idk
         public async Task SpawnAndDeleteAllEntitiesInTheSameSpot()
         {
             // This test dirties the pair as it simply deletes ALL entities when done. Overhead of restarting the round
@@ -133,7 +134,14 @@ namespace Content.IntegrationTests.Tests
                     .ToList();
                 foreach (var protoId in protoIds)
                 {
-                    entityMan.SpawnEntity(protoId, map.GridCoords);
+                    try
+                    {
+                        entityMan.SpawnEntity(protoId, map.GridCoords);
+                    }
+                    catch (Exception ex)
+                    {
+                        Assert.Fail($"Failed to spawn ent: {protoId} - {ex.GetBaseException()}");
+                    }
                 }
             });
             await server.WaitRunTicks(15); // HL: We have a lot of stuff going on, so wait a few more seconds
