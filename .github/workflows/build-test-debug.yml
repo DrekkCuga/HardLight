@@ -127,12 +127,12 @@ jobs:
       env:
         DOTNET_gcServer: 0
         DOTNET_GCHighMemPercent: 65
-        ROBUST_TEST_THREADS: 2
+        ROBUST_TEST_THREADS: 1
       run: |
         dotnet test ./bin/Content.IntegrationTests/Content.IntegrationTests.dll \
         --logger "console;verbosity=normal" \
         --filter "FullyQualifiedName~${{ matrix.test }}" -- \
-        NUnit.NumberOfTestWorkers=2 NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
+        NUnit.NumberOfTestWorkers=1 NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
 
   ci-success:
     name: Testing Success
