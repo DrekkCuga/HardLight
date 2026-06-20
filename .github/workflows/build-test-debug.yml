@@ -126,8 +126,8 @@ jobs:
     - name: Run Integration Tests
       env:
         DOTNET_gcServer: 0
-        DOTNET_GCHighMemPercent: 65
-        ROBUST_TEST_THREADS: 1
+        DOTNET_GCHighMemPercent: 75
+        ROBUST_TEST_THREADS: 2
       run: |
         dotnet test ./bin/Content.IntegrationTests/Content.IntegrationTests.dll \
         --logger "console;verbosity=normal" \
