@@ -134,7 +134,7 @@ jobs:
         dotnet test ./bin/Content.IntegrationTests/Content.IntegrationTests.dll \
         --logger "console;verbosity=normal" \
         --filter "FullyQualifiedName~${{ matrix.test }}" -- \
-        NUnit.NumberOfTestWorkers=1 NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
+        MaxCpuCount=1 NUnit.NumberOfTestWorkers=1 NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
 
     # For some reason, the github runners just randomly crash
     - name: Re-Run Integration Tests on failure
