@@ -131,8 +131,18 @@ jobs:
       run: |
         dotnet test ./bin/Content.IntegrationTests/Content.IntegrationTests.dll \
         --logger "console;verbosity=normal" \
+        --blame-crash --blame-crash-dump-type mini \
         --filter "FullyQualifiedName~${{ matrix.test }}" -- \
         NUnit.NumberOfTestWorkers=1 NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
+
+    - name: Upload Crash Dump
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: crash-dump-${{matrix.test}}
+        path: |
+          **/TestResults/**/*.xml
+          **/TestResults/**/*.dmp
 
   ci-success:
     name: Testing Success
