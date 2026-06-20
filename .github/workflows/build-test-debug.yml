@@ -124,6 +124,21 @@ jobs:
 
     # This one is clamped down at 65% because if a runner runs out of memory, it just hard crashes with NO error, it kinda sucks...
     - name: Run Integration Tests
+      continue-on-error: true
+      id: integrationtestrun
+      env:
+        DOTNET_gcServer: 0
+        DOTNET_GCHighMemPercent: 75
+        ROBUST_TEST_THREADS: 2
+      run: |
+        dotnet test ./bin/Content.IntegrationTests/Content.IntegrationTests.dll \
+        --logger "console;verbosity=normal" \
+        --filter "FullyQualifiedName~${{ matrix.test }}" -- \
+        NUnit.NumberOfTestWorkers=1 NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
+
+    # For some reason, the github runners just randomly crash
+    - name: Re-Run Integration Tests on failure
+      if: steps.integrationtestrun.outcome == 'failure'
       env:
         DOTNET_gcServer: 0
         DOTNET_GCHighMemPercent: 75
@@ -133,10 +148,10 @@ jobs:
         --logger "console;verbosity=normal" \
         --blame-crash --blame-crash-dump-type mini \
         --filter "FullyQualifiedName~${{ matrix.test }}" -- \
-        NUnit.NumberOfTestWorkers=1 NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
+        MaxCpuCount=1 NUnit.NumberOfTestWorkers=1 NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
 
     - name: Upload Crash Dump
-      if: failure()
+      if: failure() && steps.integrationtestrun.outcome == 'failure'
       uses: actions/upload-artifact@v4
       with:
         name: crash-dump-${{matrix.test}}
