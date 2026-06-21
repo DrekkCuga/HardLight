@@ -7,7 +7,7 @@ on:
 
 #Make sure that we don't have multiple of these if updates are REALLY rapid
 concurrency:
-  group: cancel-old-${{ github.event.pull_request.head.repo.full_name }}
+  group: cancel-old-${{ github.event.pull_request.head.repo.full_name }}-${{ github.head_ref }}
   cancel-in-progress: true
 
 #Need write perms to cancel runs
