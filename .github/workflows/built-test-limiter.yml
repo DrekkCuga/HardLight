@@ -1,0 +1,50 @@
+name: Cancel still-running tests for this PR
+
+on:
+  pull_request:
+    types: [ reopened, synchronize ] #We don't need to run this on fresh PRs, only updates
+    branches: [ master, staging, stable ]
+
+#Make sure that we don't have multiple of these if updates are REALLY rapid
+concurrency:
+  group: cancel-old-${{ github.event.pull_request.head.repo.full_name }}
+  cancel-in-progress: true
+
+#Need write perms to cancel runs
+permissions:
+  actions: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    name: List Runs & Cancel related
+    steps:
+      # This one is a bit long, it gets all the runs from this PR, that aren't this specific commit.
+      # It checks the repo full name (eg: DrekkCuga/HardLight),
+      # Branch name: (eg: FixCIPipeline) AND the commit hash
+      # And any queued or running runs that aren't for this commit, we cancel
+      # That way we don't keep running on commits that are already outdated
+    - name: List Pending Runs
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR_BRANCH: ${{ github.head_ref }}
+        PR_HEAD_NAME: ${{ github.event.pull_request.head.repo.full_name }}
+        PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        REPO: ${{ github.event.repository.full_name }}
+        TARGET_WORKFLOW: build-test-debug.yml
+      run: |
+        OLD_RUNS=$(gh api /repos/$REPO/actions/workflows/$TARGET_WORKFLOW/runs \
+        --method GET -F branch=$PR_BRANCH --paginate --jq "\
+        .workflow_runs[] |
+        select(.status | IN(\"in_progress\", \"pending\", \"queued\", \"requested\"))
+        | select(.head_repository.full_name == \"$PR_HEAD_NAME\"
+        and .head_sha != \"$PR_HEAD_SHA\") | .id")
+
+        if [ -z "$OLD_RUNS" ]; then
+          exit 0
+        fi
+
+        for RUN_ID in $OLD_RUNS; do
+          echo "Cancelling run for this PR: $RUN_ID"
+          gh run cancel "$RUN_ID" || echo "Failed to cancel run $RUN_ID"
+        done
