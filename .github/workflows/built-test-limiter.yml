@@ -34,7 +34,7 @@ jobs:
         TARGET_WORKFLOW: build-test-debug.yml
       run: |
         OLD_RUNS=$(gh api /repos/$REPO/actions/workflows/$TARGET_WORKFLOW/runs \
-        --method GET -F branch=$PR_BRANCH --paginate --jq "\
+        -R $REPO --method GET -F branch=$PR_BRANCH --paginate --jq "\
         .workflow_runs[] |
         select(.status | IN(\"in_progress\", \"pending\", \"queued\", \"requested\"))
         | select(.head_repository.full_name == \"$PR_HEAD_NAME\"
