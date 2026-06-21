@@ -34,7 +34,7 @@ jobs:
         TARGET_WORKFLOW: build-test-debug.yml
       run: |
         OLD_RUNS=$(gh api /repos/$REPO/actions/workflows/$TARGET_WORKFLOW/runs \
-        -R $REPO --method GET -F branch=$PR_BRANCH --paginate --jq "\
+        --method GET -F branch=$PR_BRANCH --paginate --jq "\
         .workflow_runs[] |
         select(.status | IN(\"in_progress\", \"pending\", \"queued\", \"requested\"))
         | select(.head_repository.full_name == \"$PR_HEAD_NAME\"
@@ -46,5 +46,5 @@ jobs:
 
         for RUN_ID in $OLD_RUNS; do
           echo "Cancelling run for this PR: $RUN_ID"
-          gh run cancel "$RUN_ID" || echo "Failed to cancel run $RUN_ID"
+          gh run cancel -R $REPO "$RUN_ID" || echo "Failed to cancel run $RUN_ID"
         done
