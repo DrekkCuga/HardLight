@@ -10,9 +10,8 @@ on:
 # This might slow down rapid PRs/commits, but it's better than github stopping runs half-way through.
 # We set the queue to max (100), so hopefully we never run out, but this should (mostly) ensure eventual consistency
 concurrency:
-  group: testing-runs
-  cancel-in-progress: false
-  queue: max
+  group: integration-tests-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   build:
