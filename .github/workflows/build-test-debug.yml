@@ -61,7 +61,7 @@ jobs:
       uses: actions/cache/save@v5
       with:
         path: bin
-        key: build-${{ github.event.pull_request.head.sha || github.sha }}
+        key: build-pr-${{ github.event.pull_request.number }}
 
   # We have to checkout because the tests look for a bunch of local resources
   # But the cache means we don't have to re-build every time at least.
@@ -87,7 +87,7 @@ jobs:
       uses: actions/cache/restore@v5
       with:
         path: bin
-        key: build-${{ github.event.pull_request.head.sha || github.sha }}
+        key: build-pr-${{ github.event.pull_request.number }}
         fail-on-cache-miss: true
 
     - name: Re-Build the files if the cached build is missing
@@ -134,7 +134,7 @@ jobs:
       uses: actions/cache/restore@v5
       with:
         path: bin
-        key: build-${{ github.event.pull_request.head.sha || github.sha }}
+        key: build-pr-${{ github.event.pull_request.number }}
         fail-on-cache-miss: true
 
     - name: Re-Build the files if the cached build is missing
