@@ -6,13 +6,9 @@ on:
     types: [ opened, reopened, synchronize, ready_for_review ]
     branches: [ master, staging, stable ]
 
-# Make it so only one test set can run at a time.
-# This might slow down rapid PRs/commits, but it's better than github stopping runs half-way through.
-# We set the queue to max (100), so hopefully we never run out, but this should (mostly) ensure eventual consistency
 concurrency:
-  group: testing-runs
-  cancel-in-progress: false
-  queue: max
+  group: integration-tests-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -28,10 +24,7 @@ jobs:
       uses: actions/checkout@v7
       with:
         ref: ${{ github.event.pull_request.head.sha || github.sha }}
-
-    - name: Setup Submodule
-      run: |
-        git submodule update --init --recursive
+        submodules: recursive
 
     - name: Pull engine updates
       uses: space-wizards/submodule-dependency@v0.1.5
@@ -44,7 +37,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: 9.0.x
+        dotnet-version: 10.0.100
 
     - name: Install dependencies
       run: dotnet restore
@@ -67,28 +60,44 @@ jobs:
     - name: Cache Build Objects
       uses: actions/cache/save@v5
       with:
-        path: .
-        key: workspace-${{ github.event.pull_request.head.sha || github.sha }}
+        path: bin
+        key: build-${{ github.event.pull_request.head.sha || github.sha }}
 
+  # We have to checkout because the tests look for a bunch of local resources
+  # But the cache means we don't have to re-build every time at least.
   tests:
     runs-on: ubuntu-latest
     name: Run Tests
     needs: build
     steps:
-    - name: Fetch Pre-Built Workspace
-      uses: actions/cache/restore@v5
+    - name: Checkout Master
+      uses: actions/checkout@v7
       with:
-        path: .
-        key: workspace-${{ github.event.pull_request.head.sha || github.sha }}
-        fail-on-cache-miss: true
+        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+        submodules: recursive
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: 9.0.x
+        dotnet-version: 10.0.100
+
+    - name: Fetch Pre-Built Workspace
+      id: fetch
+      continue-on-error: true
+      uses: actions/cache/restore@v5
+      with:
+        path: bin
+        key: build-${{ github.event.pull_request.head.sha || github.sha }}
+        fail-on-cache-miss: true
+
+    - name: Re-Build the files if the cached build is missing
+      if: steps.fetch.outcome == 'failure'
+      run: |
+        dotnet restore
+        dotnet build --configuration DebugOpt --no-restore /p:WarningsAsErrors=nullable /m
 
     - name: Run Tests
-      run: dotnet test --no-build --configuration DebugOpt ./bin/Content.Tests/Content.Tests.dll -- NUnit.ConsoleOut=0
+      run: dotnet vstest ./bin/Content.Tests/Content.Tests.dll -- NUnit.ConsoleOut=0
 
 
   integrationtests:
@@ -101,40 +110,53 @@ jobs:
       matrix:
         test: ${{ fromJson(needs.build.outputs.test-list) }}
     steps:
-    # Github sometimes gets a bit angry if ALL the jobs start at once, so staggering a little bit seems to make them start happier
+    - name: Checkout Master
+      uses: actions/checkout@v7
+      with:
+        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+        submodules: recursive
+
+    # Github sometimes gets a bit angry if ALL the jobs hit the cache at once, so staggering a little bit seems to make them start happier
     - name: Delay to stagger starts
       run: |
         DELAY=$((1 + RANDOM % 15))
         echo "Staggering for $DELAY seconds"
         sleep $DELAY
 
-    - name: Fetch Pre-Built Workspace
-      uses: actions/cache/restore@v5
-      with:
-        path: .
-        key: workspace-${{ github.event.pull_request.head.sha || github.sha }}
-        fail-on-cache-miss: true
-
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: 9.0.x
+        dotnet-version: 10.0.100
 
-    # This one is clamped down at 65% because if a runner runs out of memory, it just hard crashes with NO error, it kinda sucks...
+    - name: Fetch Pre-Built Workspace
+      id: fetch
+      continue-on-error: true
+      uses: actions/cache/restore@v5
+      with:
+        path: bin
+        key: build-${{ github.event.pull_request.head.sha || github.sha }}
+        fail-on-cache-miss: true
+
+    - name: Re-Build the files if the cached build is missing
+      if: steps.fetch.outcome == 'failure'
+      run: |
+        dotnet restore
+        dotnet build --configuration DebugOpt --no-restore /p:WarningsAsErrors=nullable /m
+
     - name: Run Integration Tests
       continue-on-error: true
       id: integrationtestrun
       env:
-        DOTNET_gcServer: 0
         DOTNET_GCHighMemPercent: 75
-        ROBUST_TEST_THREADS: 2
       run: |
         dotnet test ./bin/Content.IntegrationTests/Content.IntegrationTests.dll \
         --logger "console;verbosity=normal" \
         --filter "FullyQualifiedName~${{ matrix.test }}" -- \
-        MaxCpuCount=1 NUnit.NumberOfTestWorkers=1 NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
+        NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
 
     # For some reason, the github runners just randomly crash
+    # If they do, re-run the tests and slow things down a bit
+    # But also upload the crash dump as an artifact in-case things are really broken.
     - name: Re-Run Integration Tests on failure
       if: steps.integrationtestrun.outcome == 'failure'
       env:
@@ -153,6 +175,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: crash-dump-${{matrix.test}}
+        retention-days: 3
         path: |
           **/TestResults/**/*.xml
           **/TestResults/**/*.dmp
