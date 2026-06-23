@@ -18,7 +18,7 @@ jobs:
   add_label:
     # Change the repository name after you've made sure the team name is correct for your fork!
     # Hardlight: repo changed (space-wizards/space-station-14 < HardLightSector/HardLight)
-    if: ${{ (github.repository == 'HardLightSector/HardLight') && (github.event.review.state == 'APPROVED') }}
+    if: ${{ (github.event.review.state == 'APPROVED') }}
     runs-on: ubuntu-latest
     steps:
     - name: Add approved label
