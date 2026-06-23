@@ -5,6 +5,12 @@ concurrency:
   cancel-in-progress: false
   queue: max
 
+# HL: Fixed perms in the wrong spot, whoops
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
 on:
   pull_request_review:
     types: [submitted]
@@ -13,13 +19,10 @@ jobs:
     # Change the repository name after you've made sure the team name is correct for your fork!
     # Hardlight: repo changed (space-wizards/space-station-14 < HardLightSector/HardLight)
     if: ${{ (github.repository == 'HardLightSector/HardLight') && (github.event.review.state == 'APPROVED') }}
-    permissions:
-      contents: read
-      issues: write
-      pull-requests: write
     runs-on: ubuntu-latest
     steps:
     - name: Add approved label
+      id: addlabel
       if: ${{ contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.review.author_association) }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -28,3 +31,12 @@ jobs:
       run: |
         gh api --method POST "repos/$REPO/issues/$PR_NUMBER/labels" \
           --field labels[]="S: Approved"
+    - name: Remove Needs Approval label
+      if: "contains(github.event.pull_request.labels.*.name, 'S: Needs Review')"
+      continue-on-error: true
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
+        REPO: ${{ github.repository }}
+      run: |
+        gh pr edit --repo $REPO --remove-label $PR_NUMBER "S: Needs Review"
