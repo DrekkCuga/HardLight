@@ -19,34 +19,8 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-    - name: Check reviewer team membership
-      id: checkUserMember
-      env:
-        GH_TOKEN: ${{ secrets.LABELER_PAT || secrets.GITHUB_TOKEN }}
-        HAS_LABELER_PAT: ${{ secrets.LABELER_PAT != '' }}
-        ORG: HardLightSector
-        TEAM: review-team
-        USERNAME: ${{ github.actor }}
-      run: |
-        set +e
-        result=$(gh api "orgs/$ORG/teams/$TEAM/memberships/$USERNAME" 2>&1)
-        status=$?
-        set -e
-
-        if [ "$status" -eq 0 ]; then
-          echo "isTeamMember=true" >> "$GITHUB_OUTPUT"
-        elif echo "$result" | grep -q "HTTP 404"; then
-          echo "isTeamMember=false" >> "$GITHUB_OUTPUT"
-        elif [ "$HAS_LABELER_PAT" != "true" ]; then
-          echo "::warning::Could not check HardLightSector/review-team membership with GITHUB_TOKEN. Add a LABELER_PAT repository secret with read:org access to enable approved auto-labeling."
-          echo "isTeamMember=false" >> "$GITHUB_OUTPUT"
-        else
-          echo "$result"
-          exit "$status"
-        fi
-
     - name: Add approved label
-      if: ${{ steps.checkUserMember.outputs.isTeamMember == 'true' }}
+      if: ${{ contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.review.author_association) }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PR_NUMBER: ${{ github.event.pull_request.number }}
