@@ -39,4 +39,4 @@ jobs:
         PR_NUMBER: ${{ github.event.pull_request.number }}
         REPO: ${{ github.repository }}
       run: |
-        gh pr edit --repo $REPO --remove-label $PR_NUMBER "S: Needs Review"
+        gh pr edit $PR_NUMBER --repo $REPO --remove-label "S: Needs Review"
