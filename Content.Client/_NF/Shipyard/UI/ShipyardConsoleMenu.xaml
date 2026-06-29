@@ -22,6 +22,7 @@
         </BoxContainer>
         <BoxContainer Orientation="Horizontal">
             <LineEdit Name="SearchBar"
+                      Access="Public"
                       PlaceHolder="{Loc 'cargo-console-menu-search-bar-placeholder'}"
                       HorizontalExpand="True" />
         </BoxContainer>
@@ -40,6 +41,7 @@
                          VerticalExpand="True"
                          SizeFlagsStretchRatio="6">
             <BoxContainer Name="Vessels"
+                          Access="Public"
                           Orientation="Vertical"
                           HorizontalExpand="True"
                           VerticalExpand="True">
@@ -50,15 +52,18 @@
             <Button Name="TargetIdButton" Access="Public"/>
             <Button Name="SellShipButton"
                 Text="Sell"
+                Access="Public"
                 Disabled="True"
                 StyleClasses="ButtonCaution" />
 
             <Button Name="SaveShipButton"
                 Text="Save Ship"
+                Access="Public"
                 Disabled="True"
                 StyleClasses="ButtonCaution" />
             <Button Name="LoadShipButton"
                 Text="Load Ship"
+                Access="Public"
                 Disabled="True" />
             <BoxContainer Orientation="Vertical">
                 <Label Text="{Loc 'shipyard-console-deed-label'}" />
@@ -73,6 +78,7 @@
             <Label Text="Saved Ships:" />
             <ItemList Name="SavedShipsList"
                       MinSize="0 100"
+                      Access="Public"
                       HorizontalExpand="True" />
             <Button Name="ReloadShipsButton"
                 Text="Reload Saved Ships"
